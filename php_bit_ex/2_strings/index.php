@@ -121,15 +121,80 @@ in the Hood” yra žodžių trumpesnių arba lygių nei 5 raidės. Pakartokite 
 “Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale”.
 */
 
+echo "<h3> 9. </h3>";
 
+$movie6_eng = "Don't Be a Menace to South Central While Drinking Your Juice in the Hood";
+$movie6_lt =  "Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale";
+
+$word = strtok($movie6_eng, ' ');
+
+$word_count = 0;
+
+//$movie6_eng
+while ($word !== false) {
+  if (strlen($word) <= 5) {
+      ++$word_count;
+  };
+  $word = strtok(' ');
+};
+
+echo "There are $word_count words in movie name <i>$movie6_eng</i> that have less than or 5 letters. <br/>";
+
+//$movie6_lt 
+$word = strtok($movie6_lt, ' ');
+
+$word_count = 0;
+
+while ($word !== false) {
+  if (strlen($word) <= 5) {
+      ++$word_count;
+  };
+  $word = strtok(' ');
+};
+
+echo "There are $word_count words in movie name <i>$movie6_lt</i> that have less than or 5 letters. <br/>";
 
 /*
 10. Parašyti kodą, kuris generuotų atsitiktinį stringą iš lotyniškų mažųjų raidžių. Stringo ilgis
 3 simboliai.
 */
+
+echo "<h3> 10. </h3>";
+
+$string10 = 'abcdefghijklmnopqrstuvwxyz';
+$random_string = substr($string10, rand(0, strlen($string10)), 1) .
+ '' . substr($string10, rand(0, strlen($string10)), 1) . 
+ '' . substr($string10, rand(0, strlen($string10)), 1);
+
+echo "Random string is: $random_string. <br/>";
+
 /*
 Papildomas.
 11. Parašykite kodą, kuris generuotų atsitiktinį stringą su 10 atsitiktine tvarka išdėliotų
 žodžių, o žodžius generavimui imtų iš 9-me uždavinyje pateiktų dviejų stringų. Žodžiai
 neturi kartotis. (reikės masyvo)
 */
+
+echo "<h3> 11. </h3>";
+
+$string11 = $movie6_eng . ' ' . $movie6_lt;
+
+$string11 = str_replace(',', '', $string11);
+
+$array11 = explode(' ', $string11);
+
+$random_string_11 = '';
+
+echo '<pre>';
+print_r($splited_string);
+echo '</pre>';
+
+for($i = 0; $i <= 10; $i++) {
+    if (preg_match())
+    $random_string_11 .= $splited_string[rand(0, sizeof($splited_string)-1)] . ' ';
+
+};
+
+$random_string_11 = rtrim($random_string_11);
+
+echo "$random_string_11 <br/>";
