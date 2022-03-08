@@ -185,15 +185,25 @@ $array11 = explode(' ', $string11);
 
 $random_string_11 = '';
 
+$word_repeats = preg_match
+
 echo '<pre>';
 print_r($splited_string);
 echo '</pre>';
 
+//one loop goes until the entire string is replaced(consists of) with different words
+//second loop goes until string is full
+
+// or mix the array value keys and trim substrings/words from the end
 for($i = 0; $i <= 10; $i++) {
+    $random_word_11 = $array11[rand(0, sizeof($array11)-1)]; 
     if (preg_match())
-    $random_string_11 .= $splited_string[rand(0, sizeof($splited_string)-1)] . ' ';
+    
+    $random_string_11 .= . ' ';
 
 };
+
+stristr($random_string_11, )
 
 $random_string_11 = rtrim($random_string_11);
 
