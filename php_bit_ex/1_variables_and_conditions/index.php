@@ -348,9 +348,6 @@ if ($add_sec <= 59) {
         echo "<h3> After: $h : $min : $sec </h3>";
     };
 };
-//if == 60 or if == 0;
-//if midnight;
-
 
 
 /*
