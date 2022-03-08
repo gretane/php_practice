@@ -348,11 +348,3 @@ if ($add_sec <= 59) {
         echo "<h3> After: $h : $min : $sec </h3>";
     };
 };
-
-
-/*
-11. Naudokite funkcija rand(). Sugeneruokite 6 kintamuosius su
-atsitiktinem reikšmėm nuo 1000 iki 9999. Atspausdinkite reikšmes
-viename stringe, išrūšiuotas nuo didžiausios iki mažiausios, atskirtas
-tarpais. Naudoti ciklų ir masyvų NEGALIMA
-*/
