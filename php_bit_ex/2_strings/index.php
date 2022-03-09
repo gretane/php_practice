@@ -168,12 +168,16 @@ $random_string = substr($string10, rand(0, strlen($string10)), 1) .
 
 echo "Random string is: $random_string. <br/>";
 
+// also str_shuffle(); would work
+
+
 /*
 Papildomas.
 11. Parašykite kodą, kuris generuotų atsitiktinį stringą su 10 atsitiktine tvarka išdėliotų
 žodžių, o žodžius generavimui imtų iš 9-me uždavinyje pateiktų dviejų stringų. Žodžiai
 neturi kartotis. (reikės masyvo)
 */
+
 
 echo "<h3> 11. </h3>";
 
@@ -183,28 +187,26 @@ $string11 = str_replace(',', '', $string11);
 
 $array11 = explode(' ', $string11);
 
-$random_string_11 = '';
 
-$word_repeats = preg_match
+// echo '<pre>';
+// print_r($array11);
+// echo '</pre>';
 
-echo '<pre>';
-print_r($splited_string);
-echo '</pre>';
+//mix the array with shuffle() and slice words from the beggining
 
-//one loop goes until the entire string is replaced(consists of) with different words
-//second loop goes until string is full
+shuffle($array11);
 
-// or mix the array value keys and trim substrings/words from the end
-for($i = 0; $i <= 10; $i++) {
-    $random_word_11 = $array11[rand(0, sizeof($array11)-1)]; 
-    if (preg_match())
-    
-    $random_string_11 .= . ' ';
+// echo '<pre>';
+// print_r($array11);
+// echo '</pre>';
 
-};
+$random_array_11 = array_splice($array11, 14);
 
-stristr($random_string_11, )
+// echo '<pre>';
+// print_r($random_array_11);
+// echo '</pre>';
 
-$random_string_11 = rtrim($random_string_11);
+$random_string_11 = implode(' ', $random_array_11);
 
-echo "$random_string_11 <br/>";
+
+echo "<b>Random string</b>: $random_string_11 <br/>";
