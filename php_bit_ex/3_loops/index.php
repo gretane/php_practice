@@ -96,13 +96,13 @@ stilių, kad kvadratas ekrane atrodytų kvadratinis.
 * * * * * * * * * * *
 * * * * * * * * * * *
 * * * * * * * * * * *
-*/
+// */
 
-echo "<h3> 4. </h3>";
+ echo "<h3> 4. </h3>";
 
-$string4 = '';
+ $string4 = '';
 
-for($i = 0; $i < 10000; $i++) {
+for ($i = 0; $i < 10000; $i++) {
     if (($i != 0) && ($i % 100 == 0)) {
         $string4 .= '<br/>';
     }
@@ -115,8 +115,26 @@ echo "<div style='word-spacing: 9.2px;'> $string4 </div><br/>";
 5. Prieš tai nupieštam kvadratui nupieškite raudonas istrižaines.
 */
 
+
 echo "<h3> 5. </h3>";
 
+$string5 = "<article> "; 
+
+for ($i = 0; $i < 100; $i++) {
+
+    for ($j = 0; $j < 100; $j++) {
+        if ($i == $j || $j == 99 - $i){
+            $string5 .= "<span style ='color: red; word-spacing:9.2px'>* </span>";
+        } else {
+            $string5 .= "<span style='word-spacing:9.2px'>* </span>";
+        }
+    }
+    $string5 .= '<br/>';
+};
+
+$string5 .= " </article></br>";
+
+echo "$string5 <br/>";
 
 
 /*
@@ -132,8 +150,68 @@ c) Tris kartus iš eilės iškritus herbui;
 
 echo "<h3> 6. </h3>";
 
+$coin_throw = rand(0, 1);
+
+if ($coin_throw == 0) {
+    echo " H <br/>";
+} else {
+    echo " S <br/>";
+}
+
+echo "<h4> 6.a) Stop when H is thrown</h3>";
+
+do {
+    $coin_throw = rand(0, 1);
+
+    if ($coin_throw == 1) {
+        echo " S <br/>";
+    } else {
+        echo " H <br/>";
+        break;
+    };
+
+} while ($coin_throw != 0);
+
+echo "<h4> 6.b) Stop when H is thrown 3 times</h3>";
+
+$count_H = 0;
+
+do {
+    $coin_throw = rand(0, 1);
+
+    if ($coin_throw == 1) {
+        echo " S <br/>";
+    } else {
+        echo " H <br/>";
+        $count_H++;
+    };
+
+} while ($count_H < 3);
+
+echo "<h4> 6.b) Stop when H is thrown 3 times in a row</h3>";
+
+$count_H = 0;
+$coin_throw = rand(0, 1);
+
+
+while ($count_H < 3) {
+    if ($count_H < 3) {
+        if ($coin_throw == 0) {
+            echo " H ";
+            $count_H++;
+            echo "Count_H = $count_H <br/>";
+        } else {
+            $count_H = 0;
+            echo " S ";
+            echo "Count_H = $count_H <br/>";
+        }
+        $coin_throw = rand(0, 1);
+    };
+};
+
+
 /*
-7. Kazys ir Petras žaidžiai Bingo. Petras surenka taškų kiekį nuo 10 iki 20,
+7. Kazys ir Petras žaidžia Bingo. Petras surenka taškų kiekį nuo 10 iki 20,
 Kazys surenka taškų kiekį nuo 5 iki 25. Vienoje eilutėje išvesti žaidėjų
 vardus su taškų kiekiu ir “Partiją laimėjo: laimėtojo vardas”. Taškų kiekį
 generuokite funkcija rand(). Žaidimą laimi tas, kas greičiau surenka 222
@@ -183,7 +261,7 @@ didžiausio.
 
 echo "<h3> 11. </h3>";
 
-?>
+
 
 
 
