@@ -218,7 +218,27 @@ generuokite funkcija rand(). Žaidimą laimi tas, kas greičiau surenka 222
 taškus. Partijas kartoti tol, kol kažkuris žaidėjas pirmas surenka 222 arba
 daugiau taškų. Nenaudoti cikle break.
 */
+
 echo "<h3> 7. </h3>";
+
+$Petras_points = rand(10, 20);
+$Kazys_points = rand(5, 25);
+
+while ($Petras_points < 222 || $Kazys_points < 222) {
+    
+    $Petras_points += rand(10, 20);
+    $Kazys_points += rand(5, 25);
+    
+    if ($Petras_points > $Kazys_points) {
+        echo "Petras points: $Petras_points. Kazys points: $Kazys_points. <b>Round winner: Petras.</b><br/>";
+    } else if ($Petras_points < $Kazys_points) {
+        echo "Petras points: $Petras_points. Kazys points: $Kazys_points. <b>Round winner: Kazys.</b><br/>";
+    } else {
+        echo "Petras points: $Petras_points. Kazys points: $Kazys_points. Petras and Kazys have the same points. <br/>";
+    };
+
+};
+
 
 
 /*
