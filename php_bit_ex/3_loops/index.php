@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style='text-align: left'>
+    
+
+
 <?php
 
 /*
@@ -98,9 +110,9 @@ stilių, kad kvadratas ekrane atrodytų kvadratinis.
 * * * * * * * * * * *
 // */
 
- echo "<h3> 4. </h3>";
+echo "<h3> 4. </h3>";
 
- $string4 = '';
+$string4 = '';
 
 for ($i = 0; $i < 10000; $i++) {
     if (($i != 0) && ($i % 100 == 0)) {
@@ -262,22 +274,42 @@ if ($Petras_points > $Kazys_points) {
 }
 
 /*
-8. Reikia nupaišyti pilnavidurį rombą, taip pat, kaip ir pilnavidurį kvadratą
-(https://lt.wikipedia.org/wiki/Rombas), kurio aukštis 21 eilutė. Reikia
-padaryti, kad kiekviena rombo žvaigždutė būtų atsitiktinės RGB spalvos
-(perkrovus puslapį spalvos turi keistis).
+8. Reikia nupaišyti pilnavidurį rombą, taip pat, kaip ir pilnavidurį kvadratą, 
+kurio aukštis 21 eilutė. Reikia padaryti, kad kiekviena rombo žvaigždutė būtų 
+atsitiktinės RGB spalvos (perkrovus puslapį spalvos turi keistis).
 */
 
 echo "<h3> 8. </h3>";
 
-/*
-9. Panaudokite (nėra).
-*/
+echo "<article style='text-align:center;'>";
 
-echo "<h3> 9. </h3>";
+$color1 = rand(0, 255);
+$color2 = rand(0, 255);
+$color3 = rand(0, 255);
+
+for ($i = 0; $i <= 11; $i++) {
+    for ($j = 0; $j < $i; $j++) {
+        $color1 = rand(0, 255);
+        $color2 = rand(0, 255);
+        $color3 = rand(0, 255);
+        echo "<span style='color:rgb($color1, $color2, $color3);'>* </span>";
+    }
+    echo '<br/>';
+};
+for ($i = 10; $i >= 1; $i--) {
+    for ($j = 0; $j < $i; $j++) {
+        $color1 = rand(0, 255);
+        $color2 = rand(0, 255);
+        $color3 = rand(0, 255);
+        echo "<span style='color:rgb($color1, $color2, $color3);'>* </span>";
+    }
+    echo '<br/>';
+};
+
+echo '</article><br/>';
 
 /*
-10. Sumodeliuokite vinies kalimą. Įkalimo gylį sumodeliuokite
+9. Sumodeliuokite vinies kalimą. Įkalimo gylį sumodeliuokite
 pasinaudodami rand() funkcija. Vinies ilgis 8.5cm (pilnai sulenda į
 lentą).
 a) “Įkalkite” 5 vinis mažais smūgiais. Vienas smūgis vinį įkala 5-20
@@ -287,11 +319,52 @@ mm, bet yra 50% tikimybė (pasinaudokite rand() funkcija
 tikimybei sumodeliuoti), kad smūgis nepataikys į vinį.
 Suskaičiuokite kiek reikia smūgių.
 */
+//hammer, nails, hammer in, hit
 
-echo "<h3> 10. </h3>";
+echo "<h3> 9. </h3>";
+
+echo "<h4> 9.a) Gently hammer in 5 nails</h4>"; 
+
+$light_hits_depth = 0;
+$fully_hammered_in = 85;
+$one_nail_hits = 0;
+
+for ($i = 1; $i <= 5; $i++){
+    $one_nail_hits = 0;
+    $light_hits_depth = 0;
+
+while ($light_hits_depth < $fully_hammered_in) {
+    $light_hits_depth += rand(5, 20);
+    $one_nail_hits++;
+};
+    echo "Nail $i was hit: $one_nail_hits times. <br/>";
+};
+
+echo "<h4> 9.a) Hit hard and hammer in 5 nails. Possibility to miss - 50% </h4>";
+
+$hard_hits_depth = 0;
+$possible_miss = rand(0, 1);
+
+for ($i = 1; $i <= 5; $i++){
+    $one_nail_hits = 0;
+    $hard_hits_depth = 0;
+
+while ($hard_hits_depth < $fully_hammered_in) {
+    $possible_miss = rand(0, 1);
+    //echo "Possible miss: $possible_miss <br/>";
+    if ($possible_miss == 0) {
+        $hard_hits_depth += rand(20, 30);
+        $one_nail_hits++;
+        //echo "Depth: $hard_hits_depth <br/>";
+    } else {
+        $one_nail_hits++;
+    }
+};
+    echo "Nail $i was hit: $one_nail_hits times. <br/>";
+};
 
 /*
-11. Sugeneruokite stringą, kurį sudarytų 50 atsitiktinių skaičių nuo 1 iki 200,
+10. Sugeneruokite stringą, kurį sudarytų 50 atsitiktinių skaičių nuo 1 iki 200,
 atskirtų tarpais. Skaičiai turi būti unikalūs (t.y. nesikartoti).
 Sugeneruokite antrą stringą, pasinaudodami pirmu, palikdami jame tik
 pirminius skaičius (t.y tokius, kurie dalinasi be liekanos tik iš 1 ir patys
@@ -299,10 +372,65 @@ savęs). Skaičius stringe sudėliokite didėjimo tvarka, nuo mažiausio iki
 didžiausio.
 */
 
-echo "<h3> 11. </h3>";
+echo "<h3> 10. </h3>";
 
+$rand_nr10 = 0;
+$string10 = '';
+$number_count10 = 0;
 
+while ($number_count10 < 3) {
+    $rand_nr10 = rand(0, 200) . ' ';
 
+     if (substr_count($string10, $rand_nr10) == 0) {
+        $string10 .= $rand_nr10;
+        $number_count10++;
+     };
 
+};
 
+$string10 = rtrim($string10, ' ');
 
+echo "$string10 <br/>";
+
+//Checking for prime numbers
+
+$array10 = explode(' ', $string10);
+
+echo '<pre>';
+print_r ($array10);
+echo '</pre>';
+
+$size = sizeof($array10) -1; 
+
+echo "Array10 length is: $size <br/>";
+
+$count_divisors = 0;
+
+//
+
+for($i = 0; $i <= $size; $i++) {
+
+    if (($array10[$i] == 0) || ($array10[$i] == 1)) {
+        echo "Key: $i, value: $array10[$i] is not a prime number. <br/>";
+        continue;
+    };
+
+    $count_divisors = 0;
+
+    for($j = 2; $j <= $array10[$i]/2; $j++) {
+        if ($array10[$i] % $j == 0) {
+            $count_divisors++;
+        };
+    };
+
+    if ($count_divisors == 0) {
+        echo "Key: $i, value: $array10[$i] is a prime number. <br/>";
+    } else {
+        "Key: $i, value: $array10[$i] is not a prime number. <br/>";
+    };
+};
+
+?>
+
+</body>
+</html>
