@@ -221,13 +221,16 @@ daugiau taškų. Nenaudoti cikle break.
 
 echo "<h3> 7. </h3>";
 
-$Petras_points = rand(10, 20);
-$Kazys_points = rand(5, 25);
+$Petras_points = 0;
+$Kazys_points = 0;
 
-while ($Petras_points < 222 || $Kazys_points < 222) {
+$i = 0;
+
+while ($i != 1) {
     
     $Petras_points += rand(10, 20);
     $Kazys_points += rand(5, 25);
+    
     
     if ($Petras_points > $Kazys_points) {
         echo "Petras points: $Petras_points. Kazys points: $Kazys_points. <b>Round winner: Petras.</b><br/>";
@@ -237,9 +240,26 @@ while ($Petras_points < 222 || $Kazys_points < 222) {
         echo "Petras points: $Petras_points. Kazys points: $Kazys_points. Petras and Kazys have the same points. <br/>";
     };
 
+    if ($Petras_points >= 222 && $Kazys_points < 222) {
+        $i = 1;
+    } else if ($Kazys_points >= 222 && $Petras_points < 222) {
+        $i = 1;
+    } else if ($Kazys_points >= 222 && $Petras_points >= 222) {
+        $i = 1;
+    };
+
 };
 
 
+if ($Petras_points > $Kazys_points) {
+    echo "Overal winner: Petras <br/>";
+} else if ($Petras_points < $Kazys_points) {
+    echo "Overal winner: Kazys <br/>";
+} else if ($Petras_points == $Kazys_points) {
+    echo "Both are winners <br/>";
+} else {
+    echo "Something went wrong? <br/>";
+}
 
 /*
 8. Reikia nupaišyti pilnavidurį rombą, taip pat, kaip ir pilnavidurį kvadratą
