@@ -378,7 +378,7 @@ $rand_nr10 = 0;
 $string10 = '';
 $number_count10 = 0;
 
-while ($number_count10 < 3) {
+while ($number_count10 < 50) {
     $rand_nr10 = rand(0, 200) . ' ';
 
      if (substr_count($string10, $rand_nr10) == 0) {
@@ -390,45 +390,61 @@ while ($number_count10 < 3) {
 
 $string10 = rtrim($string10, ' ');
 
-echo "$string10 <br/>";
+//echo "$string10 <br/>";
+
 
 //Checking for prime numbers
 
+echo "Original string: $string10 <br/>";
+
 $array10 = explode(' ', $string10);
 
-echo '<pre>';
-print_r ($array10);
-echo '</pre>';
+// echo '<pre>';
+// print_r ($array10);
+// echo '</pre>';
 
 $size = sizeof($array10) -1; 
 
-echo "Array10 length is: $size <br/>";
+//echo "Array10 length is: $size <br/>";
 
 $count_divisors = 0;
 
-//
+// 9 77 13 0 1 4
 
-for($i = 0; $i <= $size; $i++) {
+$count_divisors = 0;
+$modulo = 0;
+$new_string10 = '';
 
-    if (($array10[$i] == 0) || ($array10[$i] == 1)) {
-        echo "Key: $i, value: $array10[$i] is not a prime number. <br/>";
-        continue;
-    };
-
+for($j = 0; $j <= $size; $j++) {
+    //echo $array10[$j] . '<br/>';
     $count_divisors = 0;
 
-    for($j = 2; $j <= $array10[$i]/2; $j++) {
-        if ($array10[$i] % $j == 0) {
-            $count_divisors++;
-        };
-    };
+    if ($array10[$j] == 0 || $array10[$j] == 1) {
+        // echo "Throwing number" . $array10[$j] . " out cause it is 0 or 1 and it is not prime. <br/>";
+    continue;
+    }
+
+    for($i = 2; $i < $array10[$j]; $i++) {
+        $modulo = $array10[$j]%$i;
+        //echo $array10[$j] . " : $i = " . $modulo . '<br/>';
+
+    if($modulo == 0) {
+        $count_divisors++;
+    }
+    }
+    // echo $array10[$j] . " has $count_divisors divisors (not counting 1 and itself). <br/>";
 
     if ($count_divisors == 0) {
-        echo "Key: $i, value: $array10[$i] is a prime number. <br/>";
+        // echo $array10[$j] . " is a prime number. <br/>";
+        $new_string10 .= $array10[$j] . ' ';
     } else {
-        "Key: $i, value: $array10[$i] is not a prime number. <br/>";
+        // echo $array10[$j] . " is not a prime number(or it is composite). <br/>";
     };
+
 };
+
+$new_string10 = rtrim($new_string10, ' ');
+echo 'New string: ' . $new_string10 . ' <br/>';
 
 ?>
 
