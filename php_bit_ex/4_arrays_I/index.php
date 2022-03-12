@@ -196,18 +196,124 @@ echo'</pre>';
 3. Sugeneruokite masyvą, kurio reikšmės atsitiktinės raidės A, B, C ir D, o ilgis
 200. Suskaičiuokite kiek yra kiekvienos raidės.
 */
+
 echo "<h3> 3. </h3>";
+
+$rand_letter = 0;
+$array3 = array();
+
+$count_A = 0;
+$count_B = 0;
+$count_C = 0;
+$count_D = 0;
+
+while (sizeof($array3) < 200) {
+    $rand_letter = rand(0, 3);
+
+    if ($rand_letter == 0) {
+        array_push($array3, 'A');
+        $count_A++;
+
+    } else if ($rand_letter == 1) {
+        array_push($array3, 'B');
+        $count_B++;
+
+    } else if ($rand_letter == 2) {
+        array_push($array3, 'C');
+        $count_C++;
+
+    } else if ($rand_letter == 3) {
+        array_push($array3, 'D');
+        $count_D++;
+    }
+};
+
+echo 'Array3: <pre>';
+print_r($array3);
+echo'</pre>';
+
+echo "There are $count_A 'A' letters in the array. <br/>";
+
+echo "There are $count_B 'B' letters in the array. <br/>";
+
+echo "There are $count_C 'C' letters in the array. <br/>";
+
+echo "There are $count_D 'D' letters in the array. <br/>";
+
 /*
 4. Išrūšiuokite 3 uždavinio masyvą pagal abecėlę.
 */
+
 echo "<h3> 4. </h3>";
+
+sort($array3);
+
+echo 'Sorted array3: <pre>';
+print_r($array3);
+echo'</pre>';
+
 /*
 5. Sugeneruokite 3 masyvus pagal 3 uždavinio sąlygą. Sudėkite masyvus,
 sudėdami atitinkamas reikšmes. Paskaičiuokite kiek unikalių (po vieną,
-nesikartojančių) reikšmių ir kiek unikalių kombinacijų gavote.
+nesikartojančių) reikšmių(kombinacijos, kurios masyve yra tik vieną kartą) ir kiek unikalių kombinacijų gavote.
 */
 
 echo "<h3> 5. </h3>";
+
+
+$array5 = [];
+
+$rand_letter = 0;
+
+
+for($j = 0; sizeof($array5) < 3; $j++) {
+    for($i = 0; $i < 200; $i++) {
+       $rand_letter = rand(0, 3);
+       $match = match($rand_letter) {
+       0 => $array5[$j][$i] = 'A',
+       1 => $array5[$j][$i] = 'B',
+       2 => $array5[$j][$i] = 'C',
+       3 => $array5[$j][$i] = 'D'
+       };
+    }
+}
+
+echo 'Array5 (multidimensional): <pre>';
+print_r($array5);
+echo'</pre>';
+
+$array5_1 = [];
+
+    for($j = 0; $j < 200; $j++) {
+            $array5_1[$j] = $array5[0][$j] .  $array5[1][$j] . $array5[2][$j];
+    }
+
+
+echo 'Array5_1: <pre>';
+print_r($array5_1);
+echo'</pre>';
+
+$array5_1_unique = array_count_values($array5_1);
+
+echo 'Array5_1_unique: <pre>';
+print_r($array5_1_unique);
+echo'</pre>';
+
+// count letter combinations
+
+echo "There are " . sizeof($array5_1_unique) . " combinations of leters in array5_1. <br/>";
+
+// count unique combination values
+
+$count_value = 0;
+
+foreach($array5_1_unique as $value) {
+    if ($value == 1) {
+        $count_value++;
+    }
+}
+
+echo "There are $count_value unique values in the array5_1. <br/>";
 
 /*
 6. Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki
