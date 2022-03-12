@@ -278,9 +278,9 @@ for($j = 0; sizeof($array5) < 3; $j++) {
     }
 }
 
-echo 'Array5 (multidimensional): <pre>';
-print_r($array5);
-echo'</pre>';
+// echo 'Array5 (multidimensional): <pre>';
+// print_r($array5);
+// echo'</pre>';
 
 $array5_1 = [];
 
@@ -289,15 +289,15 @@ $array5_1 = [];
     }
 
 
-echo 'Array5_1: <pre>';
-print_r($array5_1);
-echo'</pre>';
+// echo 'Array5_1: <pre>';
+// print_r($array5_1);
+// echo'</pre>';
 
 $array5_1_unique = array_count_values($array5_1);
 
-echo 'Array5_1_unique: <pre>';
-print_r($array5_1_unique);
-echo'</pre>';
+// echo 'Array5_1_unique: <pre>';
+// print_r($array5_1_unique);
+// echo'</pre>';
 
 // count letter combinations
 
@@ -323,21 +323,101 @@ neturi kartotis).
 
 echo "<h3> 6. </h3>";
 
+$array6_1 = [];
+$array6_2 = [];
+
+foreach(range(0, 99) as $i) {
+    $random_number = rand(100, 999);
+    $search = array_search($random_number, $array6_1);
+
+    if ($i > 0 && $search == true) {
+        continue;
+    } else {
+        $array6_1[$i] = $random_number;
+    };
+
+    $random_number2 = rand(100, 999);
+    $search2 = array_search($random_number2, $array6_2);
+
+    if ($i > 0 && $search2 == true) {
+        continue;
+    } else {
+        $array6_2[$i] = $random_number2;
+    };
+
+};
+
+// echo 'Array6_1 find repetetive values: <pre>';
+// print_r(array_count_values($array6_1));
+// echo'</pre>';
+
+
+// echo 'Array6_2 find repetetive values: <pre>';
+// print_r(array_count_values($array6_2));
+// echo'</pre>';
+
+
+
 /*
 7. Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 6
 uždavinio masyve, bet nėra antrame 6 uždavinio masyve.
 */
+
 echo "<h3> 7. </h3>";
+
+$array7 = array_diff($array6_1, $array6_2);
+
+// echo 'Array7: <pre>';
+// print_r($array7);
+// echo'</pre>';
+
+
 /*
 8. Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose 6 uždavinio
 masyvuose.
 */
+
 echo "<h3> 8. </h3>";
+
+$array8 = array_intersect($array6_1, $array6_2);
+
+echo 'Array8: <pre>';
+print_r($array8);
+echo'</pre>';
+
 /*
-9. Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 6 uždavinio masyvo
-reikšmės, o jo reikšmės iš būtų antrojo masyvo.
+9. Sugeneruokite masyvą, kurio indeksus sudarytų 6 uždavinio pirmo masyvo
+reikšmės, o jo reikšmės būtų iš antrojo masyvo.
 */
+
 echo "<h3> 9. </h3>";
+
+echo 'Array6_2: <pre>';
+print_r($array6_2);
+echo'</pre>';
+
+echo 'Array6_1: <pre>';
+print_r($array6_1);
+echo'</pre>';
+
+$array9 = array_fill_keys($array6_1, '');
+$i = 0;
+
+$array9_values = array_values($array6_2);
+
+foreach($array9 as &$value) {
+    
+    if ($i < sizeof($array9) && $i < sizeof($array9_values)) {
+        $value = $array9_values[$i];
+        $i++;
+    } 
+}
+
+
+echo 'Array9: <pre>';
+print_r($array9);
+echo'</pre>';
+
 /*
 10. Sugeneruokite 10 skaičių masyvą pagal taisyklę: Du pirmi skaičiai- atsitiktiniai
 nuo 5 iki 25. Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma.
