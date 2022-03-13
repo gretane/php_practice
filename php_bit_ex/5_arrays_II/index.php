@@ -184,12 +184,42 @@ reikšmės atsitiktinai parinktos raidės iš intervalo A-Z. Išrūšiuokite ant
 lygio masyvus pagal abėcėlę (t.y. tuos kur su raidėm).
 */
 echo '<h3> 3. </h3>';
+
+$m_array3 = [];
+
+$letters = range("A", "Z");
+
+// echo 'Letters array: <pre>';
+// print_r($letters);
+// echo '</pre>';
+
+
+foreach(range(0, 9) as $key3) {
+    foreach(range(0, rand(1, 19)) as $key3_1) {
+        $m_array3[$key3][$key3_1] = $letters[rand(0, 25)];
+    }
+}
+
+
+foreach($m_array3 as &$value3) {
+    sort($value3);
+}
+
+unset($value3);
+
+echo 'm_array3: <pre>';
+print_r($m_array3);
+echo '</pre>';
+
 /*
 4. Išrūšiuokite trečio uždavinio pirmo lygio masyvą taip, kad elementai
 kurių masyvai trumpiausi eitų pradžioje. Masyvai kurie turi bent vieną
 “K” raidę, visada būtų didžiojo masyvo visai pradžioje.
 */
+
 echo '<h3> 4. </h3>';
+
+
 /*
 5. Sukurkite masyvą iš 30 elementų. Kiekvienas masyvo elementas yra
 masyvas [user_id => xxx, place_in_row => xxx] user_id
