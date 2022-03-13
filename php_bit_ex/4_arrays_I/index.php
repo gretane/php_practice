@@ -413,6 +413,7 @@ foreach($array9 as &$value) {
     } 
 }
 
+unset($value);
 
 echo 'Array9: <pre>';
 print_r($array9);
@@ -423,7 +424,22 @@ echo'</pre>';
 nuo 5 iki 25. Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma.
 Penktas trečio ir ketvirto suma ir t.t.
 */
+
 echo "<h3> 10. </h3>";
+
+$first = rand(5, 25);
+$second = rand(5, 25);
+
+$array10 = [$first, $second];
+
+for($i = 2; $i < 10; $i++) {
+    $array10[$i] = $array10[$i - 2] + $array10[$i - 1];
+}
+
+echo 'Array10: <pre>';
+print_r($array10);
+echo'</pre>';
+
 /*
 11. Sugeneruokite 101 elemento masyvą su atsitiktiniais skaičiais nuo 0 iki 300.
 Reikšmes kurios tame masyve yra ne unikalios pergeneruokite iš naujo taip,
@@ -436,3 +452,53 @@ nesiskirtų viena nuo kitos daugiau nei per 30)
 */
 
 echo "<h3> 11. </h3>";
+
+$array11 = [];
+
+foreach(range(0, 100) as $key) {
+    $array11[$key] = rand(0, 300);
+}
+
+echo 'Array11: <pre>';
+print_r($array11);
+echo'</pre>';
+
+$array11 = array_count_values($array11);
+
+echo 'Array11 after count values: <pre>';
+print_r($array11);
+echo'</pre>';
+
+$i = 0;
+
+foreach($array11 as &$value1) {
+    $value1 = $i;
+    $i++;
+}
+
+echo 'Array11 values to 0-...: <pre>';
+print_r($array11);
+echo'</pre>';
+
+$array11 = array_flip($array11);
+
+echo 'Array11 fliped: <pre>';
+print_r($array11);
+echo'</pre>';
+
+$size11 = sizeof($array11);
+
+echo $size11 . '<br/>';
+
+while($size11 < 101) {
+    $rand_numb11 = rand(0, 300);
+    $search = array_search($rand_numb11, $array11);
+        if (!$search) {
+        $array11[$size11] = $rand_numb11;
+        $size11++;
+        } 
+}
+
+echo 'Array11 100: <pre>';
+print_r($array11);
+echo'</pre>';
