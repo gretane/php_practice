@@ -90,7 +90,7 @@ for($i = 0; $i < sizeof($m_array3_k); $i++) {              // while (sizeof $m_a
     } 
 }
 
-echo "The smallest array in m_array3_k is with index: $index. Size: $smallest_size_with_k. <br/><br/>";
+// echo "The smallest array in m_array3_k is with index: $index. Size: $smallest_size_with_k. <br/><br/>";
 
 // array_unshift($m_array3_k, $m_array3_k[$index]);
 
@@ -150,15 +150,15 @@ for($i = 0; $i < sizeof($m_array3); $i++) {
 
 $temp = []; 
 
-$smallest_size_with_k = sizeof($m_array3_k[0]);
+$smallest_size_without_k = sizeof($m_array3_k[0]);
 $index = 0;
 
 while (sizeof($m_array3_k) > 0) {
-    $smallest_size_with_k = sizeof($m_array3_k[0]);
+    $smallest_size_without_k = sizeof($m_array3_k[0]);
     $index = 0;
     for($i = 0; $i < sizeof($m_array3_k); $i++) {             
-        if (sizeof($m_array3_k[$i]) <= $smallest_size_with_k) {
-            $smallest_size_with_k = sizeof($m_array3_k[$i]);
+        if (sizeof($m_array3_k[$i]) <= $smallest_size_without_k) {
+            $smallest_size_without_k = sizeof($m_array3_k[$i]);
             $index = $i;
         } 
     }

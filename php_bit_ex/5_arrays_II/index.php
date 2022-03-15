@@ -178,7 +178,6 @@ print_r($sums_e);
 echo '</pre>';
 
 
-
 /*
 5. Sukurkite masyvą iš 30 elementų. Kiekvienas masyvo elementas yra
 masyvas [user_id => xxx, place_in_row => xxx] user_id
@@ -186,17 +185,163 @@ atsitiktinis unikalus skaičius nuo 1 iki 1000000, place_in_row atsitiktinis
 skaičius nuo 0 iki 100.
 */
 echo '<h3> 5. </h3>';
+
+$m_array5 = [];
+
+foreach(range(0, 29) as $key5) {
+    foreach(range(0, 1) as &$key5_1) {
+        if ($key5_1 == 0) {
+            $key5_1 = "user_id";
+            $m_array5[$key5][$key5_1] = rand(1, 1000000);
+        } else if ($key5_1 == 1) {
+            $key5_1 = "place_in_row";
+            $m_array5[$key5][$key5_1] = rand(0, 100);
+        } else {
+            echo "Something went wrong... <br/>";
+        }
+    }
+}
+
+unset($key5_1);
+
+echo 'm_array5: <pre>';
+print_r($m_array5);
+echo '</pre>';
+
 /*
 6. Išrūšiuokite 5 uždavinio masyvą pagal user_id didėjančia tvarka. Ir
 paskui išrūšiuokite pagal place_in_row mažėjančia tvarka.
 */
 echo '<h3> 6. </h3>';
+
+$temp5 = [];
+$temp5_1 = [];
+
+// sort user_id in ascending order
+
+
+$smallest_id = $m_array5[0]["user_id"];
+$index = 0;
+
+while (sizeof($m_array5) > 0) {
+    $smallest_id = $m_array5[0]["user_id"];
+    $index = 0;
+    for ($i = 0; $i < sizeof($m_array5); $i++) {
+        if ($smallest_id >= $m_array5[$i]["user_id"]) {
+            $smallest_id = $m_array5[$i]["user_id"];
+            $index = $i;
+        }
+    }
+
+    array_push($temp5, $m_array5[$index]);    
+    unset($m_array5[$index]);
+
+    if (sizeof($m_array5) > 0) {
+
+        $temp5_1 = [...$m_array5];
+        $m_array5 = [...$temp5_1];
+    }  
+}
+
+$m_array5 = [...$temp5];
+
+echo 'm_array5 user_id sorted: <pre>';
+print_r($m_array5);
+echo '</pre>';
+
+
+// sort place_in_row in decending order
+
+$temp5 = [];
+$temp5_1 = [];
+
+$largest = $m_array5[0]["place_in_row"];
+$index = 0;
+
+while (sizeof($m_array5) > 0) {
+    $largest = $m_array5[0]["place_in_row"];
+    $index = 0;
+    for ($i = 0; $i < sizeof($m_array5); $i++) {
+        if ($largest <= $m_array5[$i]["place_in_row"]) {
+            $largest = $m_array5[$i]["place_in_row"];
+            $index = $i;
+        }
+    }
+
+    array_push($temp5, $m_array5[$index]);    
+    unset($m_array5[$index]);
+
+    if (sizeof($m_array5) > 0) {
+
+        $temp5_1 = [...$m_array5];
+        $m_array5 = [...$temp5_1];
+    }  
+}
+
+$m_array5 = [...$temp5];
+
+echo 'm_array5 place_in_row sorted: <pre>';
+print_r($m_array5);
+echo '</pre>';
+
+
 /*
 7. Prie 6 uždavinio masyvo antro lygio masyvų pridėkite dar du elementus:
 name ir surname. Elementus užpildykite stringais iš atsitiktinai
 sugeneruotų lotyniškų raidžių, kurių ilgiai nuo 5 iki 15.
 */
 echo '<h3> 7. </h3>';
+
+function rand_string() {
+    $string6 = "abcdefghijklmnopqrstuvwxyz";
+    $rand_string = '';
+
+    while(strlen($rand_string) < rand(5, 15)) {
+        $rand_string .= substr($string6, rand(0, 25), 1);
+    }
+    return $rand_string;
+}
+
+$rand_string = '';
+
+// $add_array = [];
+
+// foreach(range(0, 9) as $key_add) {
+//     foreach(range(0, 1) as &$key_add_1) {
+//         if ($key_add_1 == 0) {
+//             $key_add_1 = "name";
+//             $rand_string = rand_string();
+//             $add_array[$key_add]["name"] = $rand_string; 
+//         } else if ($key_add_1 == 1) {
+//             $key_add_1 = "surname";
+//             $rand_string = rand_string();
+//             $add_array[$key_add]["surname"] = $rand_string;
+//         }
+//     }
+// }
+
+// echo 'add_array: <pre>';
+// print_r($add_array);
+// echo '</pre>';
+
+for($i = 0; $i < sizeof($m_array5); $i++) {
+    for($j = 0; $j < 4; $j++) {
+        if ($j == 2) {
+            $rand_string = rand_string();
+            $m_array5[$i]["name"] = $rand_string;
+
+        } else if ($j == 3) {
+            $rand_string = rand_string();
+            $m_array5[$i]["surname"] = $rand_string;
+
+        }
+    }
+}
+
+echo 'm_array5 with name and surname: <pre>';
+print_r($m_array5);
+echo '</pre>';
+
 /*
 8. Sukurkite masyvą iš 10 elementų. Masyvo reikšmes užpildykite pagal
 taisyklę: generuokite skaičių nuo 0 iki 5. Ir sukurkite tokio ilgio masyvą.
@@ -204,13 +349,50 @@ Jeigu reikšmė yra 0 masyvo nekurkite. Antro lygio masyvo reikšmes
 užpildykite atsitiktiniais skaičiais nuo 0 iki 10. Ten kur masyvo nekūrėte
 reikšmę nuo 0 iki 10 įrašykite tiesiogiai.
 */
+
 echo '<h3> 8. </h3>';
+
+$m_array8 = [];
+
+$rand_array_el = 0;
+
+foreach(range(0, 9) as $key8) {
+    $rand_array_el = rand(0, 5);
+    if ($rand_array_el == 0) {
+        $m_array8[$key8] = rand(0, 10);
+    } else {
+        foreach(range(0, $rand_array_el) as $key8_1) {
+
+            $m_array8[$key8][$key8_1] = rand(0, 10);
+        } 
+    }
+
+
+}
+
+echo 'm_array8: <pre>';
+print_r($m_array8);
+echo '</pre>';
+
 /*
 9. Paskaičiuokite 8 uždavinio masyvo visų reikšmių sumą ir išrūšiuokite
 masyvą taip, kad pirmiausiai eitų mažiausios masyvo reikšmės arba
 jeigu reikšmė yra masyvas, to masyvo reikšmių sumos.
 */
+
 echo '<h3> 9. </h3>';
+
+$sum = 0;
+
+foreach($m_array8 as $key9 => $value9) {
+ if (is_array($m_array8[$key9])) {
+     $sum += array_sum($m_array8[$key9]);
+ } else {
+     $sum += $m_array8[$key9];
+ }
+}
+
+echo "The overall sum is: $sum. <br/><br/>";
 
 /*
 10. Sukurkite masyvą iš 10 elementų. Jo reikšmės masyvai iš 10 elementų.
