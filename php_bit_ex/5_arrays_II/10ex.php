@@ -82,5 +82,26 @@ echo '</pre>';
 
 ?>
 
+<article>
+
+<table style='border: 1px solid; border-collapse: collapse; border-color: black;'>
+
+<?php
+
+for($i = 0; $i < sizeof($m_array10); $i++) {
+    echo "<tr> <br/>";
+    for($j = 0; $j < sizeof($m_array10); $j++) {
+        echo "<td style='border: 1px solid; text-align: center; border-color: LightGray; height: 20px; width: 20px;
+        color:" . $m_array10[$i]["color"] . "'>" . $m_array10[$i]["value"] . "</td>";
+    }
+    echo '</tr>';
+}
+
+
+?>
+</table> 
+</artcicle>;
+
+
 </body>
 </html>
