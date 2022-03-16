@@ -442,16 +442,6 @@ echo 'm_array8 sorted by sums: <pre>';
 print_r($m_array8);
 echo '</pre>';
 
-
-/*
-10. Sukurkite masyvą iš 10 elementų. Jo reikšmės masyvai iš 10 elementų.
-Antro lygio masyvų reikšmės masyvai su dviem elementais value ir
-color. Reikšmė value vienas iš atsitiktinai parinktų simbolių: #%+*@裡,
-o reikšmė color atsitiktinai sugeneruota spalva formatu: #XXXXXX.
-Pasinaudoję masyvų atspausdinkite “kvadratą” kurį sudarytų masyvo
-reikšmės nuspalvintos spalva color.
-*/
-echo '<h3> 10. </h3>';
 /*
 11. Duotas kodas, generuojantis masyvą:
 do {
