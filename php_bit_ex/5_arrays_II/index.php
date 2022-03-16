@@ -394,6 +394,55 @@ foreach($m_array8 as $key9 => $value9) {
 
 echo "The overall sum is: $sum. <br/><br/>";
 
+// $array_sum = 0;
+
+// foreach($m_array8 as $key9 => $value9) {
+//     if (is_array($m_array8[$key9])) {
+//         $array_sum = array_sum($m_array8[$key9]);
+//     } else {
+//          $m_array8[$key9];
+//     }
+// }
+
+$temp8 = [];
+$temp8_1 = [];
+
+$smallest = is_array($m_array8[0])? array_sum($m_array8[0]) : $m_array8[0];
+
+//echo $smallest . '<br/>';
+
+$index = 0;
+
+while (sizeof($m_array8) > 0) {
+    $smallest = is_array($m_array8[0])? array_sum($m_array8[0]) : $m_array8[0];
+    $next = 0;
+    $index = 0;
+    for ($i = 0; $i < sizeof($m_array8); $i++) {
+        $next = is_array($m_array8[$i])? array_sum($m_array8[$i]) : $m_array8[$i];
+
+        if ($smallest >= $next) {
+            $smallest = $next;
+            $index = $i;
+        }
+    }
+    array_push($temp8, $m_array8[$index]);    
+    unset($m_array8[$index]);
+
+    if (sizeof($m_array8) > 0) {
+
+        $temp8_1 = [...$m_array8];
+        $m_array8 = [...$temp8_1];
+    }  
+}
+
+$m_array8 = [...$temp8];
+
+
+echo 'm_array8 sorted by sums: <pre>';
+print_r($m_array8);
+echo '</pre>';
+
+
 /*
 10. Sukurkite masyvą iš 10 elementų. Jo reikšmės masyvai iš 10 elementų.
 Antro lygio masyvų reikšmės masyvai su dviem elementais value ir
