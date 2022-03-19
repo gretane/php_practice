@@ -134,6 +134,27 @@ ištrinkite pirminius skaičius.
 */
 echo "<h3> 6. </h3>";
 
+$array6 = [];
+
+foreach(range(0, 99) as $key6) {
+    $array6[$key6] = rand(333, 777);
+}
+
+echo 'array6: <pre>';
+print_r($array6);
+echo '</pre>';
+
+
+foreach($array6 as $key6_1 => $value6_1) {
+    if (int_divisors($value6_1) == 0) {
+        unset($array6[$key6_1]);
+    }
+}
+
+echo 'array6 non-prime: <pre>';
+print_r($array6);
+echo '</pre>';
+
 /*
 7. Sugeneruokite atsitiktinio (nuo 10 iki 20) ilgio masyvą, kurio visi, išskyrus
 paskutinį, elementai yra atsitiktiniai skaičiai nuo 0 iki 10, o paskutinis
