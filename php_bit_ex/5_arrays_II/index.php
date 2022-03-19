@@ -250,7 +250,7 @@ print_r($m_array5);
 echo '</pre>';
 
 
-// sort place_in_row in decending order
+// sort place_in_row in descending order
 
 $temp5 = [];
 $temp5_1 = [];
