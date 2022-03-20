@@ -34,14 +34,14 @@ reikia) uždavinio funkciją ir preg_replace_callback();
 echo "<h3> 3. </h3>";
 
 function h1_time($matches) {
-    return '<h1>' . $matches[0] . '</h1>';
+    return "<h1 style='display:inline;'>" . $matches[0] . '</h1>';
 };
 
 $string_time = md5(time());
 
 echo $string_time . '<br/>';
 
-$pattern = '/[0-9]+/';
+$pattern = '/\d+/';
 $string_h1 = preg_replace_callback($pattern, 'h1_time', $string_time);
 
 echo $string_h1 . '<br/>';
@@ -155,14 +155,7 @@ echo 'array6 non-prime: <pre>';
 print_r($array6);
 echo '</pre>';
 
-/*
-7. Sugeneruokite atsitiktinio (nuo 10 iki 20) ilgio masyvą, kurio visi, išskyrus
-paskutinį, elementai yra atsitiktiniai skaičiai nuo 0 iki 10, o paskutinis
-masyvas, kuris generuojamas pagal tokią pat salygą kaip ir pirmasis
-masyvas. Viską pakartokite atsitiktinį nuo 10 iki 30 kiekį kartų.
-Paskutinio masyvo paskutinis elementas yra lygus 0;
-*/
-echo "<h3> 7. </h3>";
+
 
 /*
 8. Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą.
