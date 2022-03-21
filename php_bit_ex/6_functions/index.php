@@ -219,3 +219,66 @@ paskaičiuokite masyvo pirminių skaičių vidurkį ir jeigu mažesnis nei 70
 viską kartokite.
 */
 echo "<h3> 10. </h3>";
+
+$m_array10 = [];
+
+foreach(range(0, 9) as $key10) {
+    foreach(range(0, 9) as $key10_1) {
+        $m_array10[$key10][$key10_1] = rand(1, 100);
+    }
+}
+
+echo 'm_array10: <pre>';
+print_r($m_array10);
+echo '</pre>';
+
+$all_sum = 0;
+$smallest10 = $m_array10[0][0];
+$smallest_key = 0;
+$smallest_key1 = 0;
+$count_primes = 0;
+
+$loop_repeat = 0;
+
+
+do{
+    
+$all_sum = 0;
+$smallest10 = $m_array10[0][0];
+$smallest_key = 0;
+$smallest_key1 = 0;
+$count_primes = 0;
+
+foreach($m_array10 as $key_sum => $value_sum) {
+    foreach($m_array10[$key_sum] as $key_sum1 => $value_sum1) {
+        if ($smallest10 >= $value_sum1) {
+            $smallest10 = $value_sum1;
+            $smallest_key = $key_sum;
+            $smallest_key1 = $key_sum1;
+        }
+        if (is_prime($value_sum1)) {
+            $all_sum += $value_sum1;
+            $count_primes++;
+        }
+    }
+}
+
+// echo "Overal sum of prime nubers is: $all_sum. <br/>";
+// echo "Number of primes: $count_primes. <br/>";
+// echo "The mean is:" . $all_sum/$count_primes . '<br/>';
+// echo "Smallest number is: $smallest10. <br/>";
+// echo "Its location is: m_array10[$smallest_key][$smallest_key1]. <br/><br/>";
+
+if ($all_sum/$count_primes > 70) {
+    break;
+} else {
+    $m_array10[$smallest_key][$smallest_key1] += 3;
+    $loop_repeat++;
+}
+
+// echo " The smallest number +3:" . $m_array10[$smallest_key][$smallest_key1] . '<br/><br/>';
+
+} while($all_sum/$count_primes < 70);
+
+echo "The mean is:" . $all_sum/$count_primes . '<br/>';
+echo "The loop repeated $loop_repeat times. <br/>";
