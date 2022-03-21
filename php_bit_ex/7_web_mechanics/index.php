@@ -1,4 +1,5 @@
 <?php
+
 /*
 Sukurti puslapį su juodu fonu ir su dviem linkais (nuorodom) į save. Viena nuoroda su
 failo vardu, o kita nuoroda su failo vardu ir GET duomenų perdavimo metodu
@@ -6,25 +7,51 @@ perduodamu kintamuoju color=1. Padaryti taip, kad paspaudus ant nuorodos su
 perduodamu kintamuoju fonas nusidažytų raudonai, o paspaudus ant nuorodos be
 perduodamo kintamojo, vėl pasidarytų juodas.
 */
-echo '<h3> 1. </h3>';
+echo "<h3 style='color: white;'> 1. </h3>";
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7_web_mechanics</title>
+    <style>
+        <?php
+         if (1 == ($_GET['color'] ?? '')) {
+            echo "body {background-color: red;}";
+         } else {
+            echo "body {background-color: black;}";
+         }
+         ?>
+    </style>
+</head>
+<body>
+
+<a style='color: white;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/'>index.php</a> 
+
+<a style='color: white;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/index.php?color=1'>color=1</a> 
+
+<?php
 /*2. Sukurti puslapį panašų į 1 uždavinį, tiktai antro linko su perduodamu kintamuoju
 nedarykite, o vietoj to padarykite, URL eilutėje ranka įvedus GET kintamąjį color su RGB
 spalvos kodu (pvz color=ff1234) puslapio fono spalva pasidarytų tokios spalvos.
 */
-echo '<h3> 2. </h3>';
+echo "<h3 style='color: white;'> 2. </h3>";
 
 /*
 3. Perdarykite 2 uždavinį taip, kad spalvą būtų galimą įrašyti į laukelį ir ją išsiųsti mygtuku
 GET metodu formoje.
 */
-echo '<h3> 3. </h3>';
+echo "<h3 style='color: white;'> 3. </h3>";
 
 /*
 4. Sukurkite du puslapius lemon.php ir orange.php. Jų fonus nuspalvinkite atitinkamom
 spalvom. Į lemon.php puslapį įdėkite kodą, kuris naršyklę visada peradresuotų į puslapį
 orange.php. Pademonstruokite veikimą.
 */
-echo '<h3> 4. </h3>';
+echo "<h3 style='color: white;'> 4. </h3>";
 
 /*
 5. Sukurkite du atskirus puslapius blue.php ir red.php Juose sukurkite linkus į pačius save
@@ -83,3 +110,6 @@ kažkuris žaidėjas surenka 30 taškų. Tada parodomas pranešimas apie
 laimėjimą ir vėl leidžiama suvesti žaidėjų vardus ir pradėti žaidimą iš
 naujo.
 */
+?>
+</body>
+</html>
