@@ -19,12 +19,12 @@ echo "<h3 style='color: white;'> 1. </h3>";
     <title>7_web_mechanics</title>
     <style>
         <?php
-         if (1 == ($_GET['color'] ?? '')) {
+        if (1 == ($_GET['color'] ?? '')) {
             echo "body {background-color: red;}";
-         } else {
+        } else {
             echo "body {background-color: black;}";
-         }
-         ?>
+        }
+        ?>
     </style>
 </head>
 <body>
@@ -34,11 +34,6 @@ echo "<h3 style='color: white;'> 1. </h3>";
 <a style='color: white;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/index.php?color=1'>color=1</a> 
 
 <?php
-/*2. Sukurti puslapį panašų į 1 uždavinį, tiktai antro linko su perduodamu kintamuoju
-nedarykite, o vietoj to padarykite, URL eilutėje ranka įvedus GET kintamąjį color su RGB
-spalvos kodu (pvz color=ff1234) puslapio fono spalva pasidarytų tokios spalvos.
-*/
-echo "<h3 style='color: white;'> 2. </h3>";
 
 /*
 3. Perdarykite 2 uždavinį taip, kad spalvą būtų galimą įrašyti į laukelį ir ją išsiųsti mygtuku
