@@ -35,6 +35,22 @@ echo "<h3 style='color: white;'> 1. </h3>";
 
 <?php
 
+/*2. Sukurti puslapį panašų į 1 uždavinį, tiktai antro linko su perduodamu kintamuoju
+nedarykite, o vietoj to padarykite, URL eilutėje ranka įvedus GET kintamąjį color su RGB
+spalvos kodu (pvz color=ff1234) puslapio fono spalva pasidarytų tokios spalvos.
+*/
+echo "<h3 style='color: white;'> 2. </h3>";
+
+echo "<a style='color: white;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/2ex.php'>2ex.php</a> <br/>"; 
+
+/*
+3. Perdarykite 2 uždavinį taip, kad spalvą būtų galimą įrašyti į laukelį ir ją išsiųsti mygtuku
+GET metodu formoje.
+*/
+echo "<h3 style='color: white;'> 3. </h3>";
+
+echo "<a style='color: white;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/3ex.php'>3ex.php</a> <br/>";
+
 /*
 4. Sukurkite du puslapius lemon.php ir orange.php. Jų fonus nuspalvinkite atitinkamom
 spalvom. Į lemon.php puslapį įdėkite kodą, kuris naršyklę visada peradresuotų į puslapį
@@ -42,6 +58,11 @@ orange.php. Pademonstruokite veikimą.
 */
 echo "<h3 style='color: white;'> 4. </h3>";
 
+?>
+<a style='color: #ffff6e;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/lemon.php'>lemon.php</a> 
+<a style='color: orange;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/orange.php'>orange.php</a> 
+
+<?php
 /*
 5. Sukurkite du atskirus puslapius blue.php ir red.php Juose sukurkite linkus į pačius save
 (abu į save ne į kitą puslapį!). Padarykite taip, kad paspaudus ant linko puslapis ne
