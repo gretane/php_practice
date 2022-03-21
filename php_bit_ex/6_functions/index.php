@@ -158,12 +158,6 @@ echo '</pre>';
 
 
 /*
-8. Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą.
-Skaičiuoti reikia visuose masyvuose ir submasyvuose.
-*/
-echo "<h3> 8. </h3>";
-
-/*
 9. Sugeneruokite masyvą iš trijų elementų, kurie yra atsitiktiniai skaičiai
 nuo 1 iki 33. Jeigu tarp trijų paskutinių elementų yra nors vienas ne
 pirminis skaičius, prie masyvo pridėkite dar vieną elementą- atsitiktinį

@@ -10,84 +10,70 @@ Paskutinio masyvo paskutinis elementas yra lygus 0;
 */
 echo "<h3> 7. </h3>";
 
- //recursive
-// -------------------------------------------------------------------------
-// function array_nest($array, $repeat, $rand) {
-    
-//     foreach(range(0, $rand) as $key) {       // change el numb 10-20
-//         $array[$key] = rand(0, 10); 
-//     }
+// // -------------------------------------------------------------------------
+// function array_nest() {
+//     $array = 0;
+//     $array_1 = [];
 
-//     if ($repeat == 0) {
-//         $array[sizeof($array)-1] = 0;                   // last el of array
-//         return $array;
+//     for($i = 0; $i < rand(10, 30); $i++) {
+        
+//         foreach(range(0, rand(9, 19)) as $key) {       // change el numb 10-20
+//             $array_1[] = rand(0, 10); 
+//         }
+
+//         $array_1[sizeof($array_1)-1] = $array;
+//         $array = $array_1;
+//         $array_1 = [];
 //     }
-//     $array[sizeof($array)-1] = [];
-//     $array[sizeof($array)-1] = array_nest($array, $repeat-1, rand(1, 10));
 
 //     return $array;
-
 // }
 
 // $m_array7 = [];
 
-// $rand_d = rand(1, 10); 
-
-// echo $rand_d . '<br/>';
-
-// $m_array7 = array_nest($m_array7, 5, rand(1, 10));
+// $m_array7 = array_nest();
 
 // echo 'm_array7 recursive: <pre>';
 // print_r($m_array7);
 // echo '</pre>';
 
-// // function array_nest($array, $repeat = 2) {
+//--------------------------------------------------
 
-// //     $a = $repeat;
-// //     echo "$a <br/>";
-// //     $el_nr = rand(1, 2);
+$m_array7 = [];
+$rand_7 = rand(9, 29);
 
-// // foreach(range(0, $el) as $key) {
-// //     $array[$key] = rand(0, 10);
+echo "Repeat $rand_7 times. <br/>";
+
+foreach(range(0, rand(9, 19)) as $key7) {       
+    $m_array7[] = rand(0, 10); 
+}
+
+function array_nest($repeat) {
+    $array_length = rand(10, 20);
+    $array = [];
+        
+    for($i = 0; $i < $array_length - 1; $i++){
+        $array[] = rand(0, 10);
+    }
+
+    if ($repeat > 1) {
+        $array[] = array_nest($repeat-1);
+    }
+    else {
+        $array[] = 0;
+    }
     
-// // }
+    return $array;
+}
 
-// // if ($repeat == 0) {
-// //     $array[sizeof($array)] = 0;
-// //     return $array;
-// // }
+$m_array7[sizeof($m_array7)-1] = array_nest($rand_7);
 
-// // $a = $repeat - 1;
-
-// // $array[sizeof($array)] = array_nest($array, $a);
-
-// // return $array;
-// // }
-//--------------------------------------------------------------
-
-//loop
-// $array = [10...20];
-// $value = 0, 10;
-// $repeat = 10, 30;
-// $last_array[last_el] = 0;
-
-// $repeat = rand(10, 30);
-
-// echo $repeat . "<br/>";
-
-// $deepest_array = [];
-
-// foreach(range(0, rand(9, 29)) as $key7) {
-//     $deepest_array[$key7] = rand(0, 10);
-// }
-
-// $deepest_array[sizeof($deepest_array)-1] = 0;
-
-// echo 'deepest_array: <pre>';
-// print_r($deepest_array);
-// echo '</pre>';
+echo 'm_array7 recursive: <pre>';
+print_r($m_array7);
+echo '</pre>';
 
 
+//--------------------------------------------------
 
 //not my solutions
 
@@ -150,7 +136,9 @@ echo "<h3> 7. </h3>";
 // function masyvoGeneratorius($vaikas, $key){//masyvas, kiek iteraciju, kelinta yra dabar
 //     if($key==0){
 //        // echo "key = 0<br>";
+//         echo '<pre>';
 //         print_r($vaikas);
+//         echo '</pre>';
 //         return;
 //     }
     
@@ -176,6 +164,54 @@ echo "<h3> 7. </h3>";
 // }
 
 // $kiekKartoti = rand(10, 30);
-// echo "Iterraciju skaicius - ".$kiekKartoti."<br>";
+// echo "Iteraciju skaicius - ".$kiekKartoti."<br>";
 // masyvoGeneratorius([], $kiekKartoti);
-?>
+
+
+/*
+8. Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą.
+Skaičiuoti reikia visuose masyvuose ir submasyvuose.
+*/
+
+echo "<h3> 8. </h3>";
+
+$sum = array_sum($m_array7);
+
+echo "Sum of first level array: $sum. <br/>";
+
+//$rand_7
+
+// function array_sum_el($repeat) {
+//     $array_length = rand(10, 20);
+//     $array = [];
+//     $sum = 0;    
+//     for($i = 0; $i < $array_length - 1; $i++){
+//         $array[] = rand(10, 20);
+//     }
+// // $sum += array_sum($array);
+//     if ($repeat > 1) {
+//         $array[] = array_nest($repeat-1);
+//     }
+//     else {
+//         $array[] = 0;
+//     }
+    
+//     return $array;
+// }
+
+$sumAll = 0;
+function sumArr($arr) {
+    static $sum = 0;
+    foreach($arr as $val) {
+        if(!is_array($val)) {
+            $sum += $val;
+        } else {
+            sumArr($val);
+        }
+    }
+return $sum;
+}
+
+$sumAll = sumArr($m_array7);
+
+echo "Overall sum is: $sumAll. <br/>";
