@@ -36,12 +36,6 @@ echo "<h3 style='color: white;'> 1. </h3>";
 <?php
 
 /*
-3. Perdarykite 2 uždavinį taip, kad spalvą būtų galimą įrašyti į laukelį ir ją išsiųsti mygtuku
-GET metodu formoje.
-*/
-echo "<h3 style='color: white;'> 3. </h3>";
-
-/*
 4. Sukurkite du puslapius lemon.php ir orange.php. Jų fonus nuspalvinkite atitinkamom
 spalvom. Į lemon.php puslapį įdėkite kodą, kuris naršyklę visada peradresuotų į puslapį
 orange.php. Pademonstruokite veikimą.
