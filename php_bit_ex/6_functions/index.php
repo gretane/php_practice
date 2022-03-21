@@ -166,6 +166,50 @@ pridėkite dar vieną elementą. Kartokite, kol sąlyga nereikalaus pridėti
 elemento.
 */
 echo "<h3> 9. </h3>";
+
+$array9 = [];
+
+foreach(range(0, 2) as $key9) {
+    $array9[] = rand(1, 33);
+}
+
+
+function is_prime($numb) {
+    $prime_count = 0;
+
+    for($j = 2; $j < $numb; $j++) {
+        if ($numb % $j == 0) {
+            $prime_count++;
+        }
+    }
+    if ($prime_count > 0) {
+        return false;
+    } else {
+        return true;
+    }
+};
+
+$count_3 = 3;
+
+while ($count_3 > 0) {
+    $count_3 = 3;
+    for($i = 3; $i > 0; $i--) {
+        $temp9 = $array9[sizeof($array9)-$i];
+        if (is_prime($temp9)) {
+            $count_3--;
+        }
+    }
+    if ($count_3 == 0) {
+        break;
+    } else {
+        $array9[] = rand(1, 33);
+    }
+}
+
+echo 'array9 with 3 non-primes at the end: <pre>';
+print_r($array9);
+echo '</pre>';
+
 /*
 10. Sugeneruokite masyvą iš 10 elementų, kurie yra masyvai iš 10 elementų,
 kurie yra atsitiktiniai skaičiai nuo 1 iki 100. Jeigu tokio didelio masyvo (ne
