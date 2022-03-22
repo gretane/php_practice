@@ -82,22 +82,29 @@ GET ir kitą POST. Nenaudodami jokių konkrečių $_GET ar $_POST reikšmių,
 nuspalvinkite foną žaliai, kai paspaustas mygtukas iš GET formos ir geltonai- kai iš
 POST.
 */
-echo '<h3> 6. </h3>';
+echo "<h3 style='color: white;'> 6. </h3>";
+
+echo "<a style='color: white;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/6ex.php'>6ex.php</a> <br/>";
 
 /*
 7. Pakartokite 6 uždavinį. Papildykite jį kodu, kuris naršyklę po POST metodo peradresuotų
 tuo pačiu adresu (t.y. į patį save) jau GET metodu.
 */
-echo '<h3> 7. </h3>';
+echo "<h3 style='color: white;'> 7. </h3>";
+
+echo "<a style='color: MediumSeaGreen;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/7ex.php'>7ex.php</a> <br/>";
 
 /*
-8. Sukurkite du puslapius pink.php ir rose.php. Nuspalvinkite juos atitinkamo spalvom. Į
+8. Sukurkite du puslapius pink.php ir rose.php. Nuspalvinkite juos atitinkamom spalvom. Į
 pink.php puslapį įdėkite formą su POST metodu ir mygtuku “GO TO ROSE”. Formą
 nukreipkite, kad ji atsidarinėtų rose.php puslapyje. Padarykite taip, kad surinkus
 naršyklėje tiesiogiai adresą į rose.php puslapį, naršyklė būtų peradresuojama į pink.php
 puslapį.
 */
-echo '<h3> 8. </h3>';
+echo "<h3 style='color: white;'> 8. </h3>";
+
+echo "<a style='color: pink;' href='./8_ex/pink.php'>pink.php</a> <br/>";
+echo "<a style='color: MistyRose;' href='./8_ex/rose.php'>rose.php</a> <br/>";
 
 /*
 9. Padarykite juodą puslapį, kuriame būtų POST forma, mygtukas ir atsitiktinis kiekis (3-10)
@@ -105,13 +112,13 @@ checkbox su raidėm A,B,C… Padarykite taip, kad paspaudus mygtuką, fono spalv
 pasikeistų į baltą, forma išnyktų ir atsirastų skaičius, rodantis kiek buvo pažymėta
 checkboksų (ne kurie, o kiek).
 */
-echo '<h3> 9. </h3>';
+echo "<h3 style='color: white;'> 9. </h3>";
 
 /*
 10. Pakartokite 9 uždavinį. Padarykite taip, kad atsirastų du skaičiai. Vienas rodytų kiek buvo
 pažymėta, o kitas kiek iš vis buvo jų sugeneruota.
 */
-echo '<h3> 10. </h3>';
+echo "<h3 style='color: white;'> 10. </h3>";
 /*
 11. papildomas
 Suprogramuokite žaidimą. Žaidimas prasideda dviem laukeliais,
