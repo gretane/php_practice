@@ -10,9 +10,9 @@
     
 <?php 
 
-echo '<pre>';
-print_r($_GET);
-echo '</pre>';
+header('Location: http://localhost/php_practice/php_bit_ex/7_web_mechanics/orange.php');
+die;
+
 
 ?>
 </body>
