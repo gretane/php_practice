@@ -114,6 +114,9 @@ checkboksų (ne kurie, o kiek).
 */
 echo "<h3 style='color: white;'> 9. </h3>";
 
+
+echo "<a style='color: white;' href='./9ex.php'>9ex.php</a> <br/>";
+
 /*
 10. Pakartokite 9 uždavinį. Padarykite taip, kad atsirastų du skaičiai. Vienas rodytų kiek buvo
 pažymėta, o kitas kiek iš vis buvo jų sugeneruota.
