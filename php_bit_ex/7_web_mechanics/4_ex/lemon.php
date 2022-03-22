@@ -1,3 +1,8 @@
+<?php 
+header('Location: http://localhost/php_practice/php_bit_ex/7_web_mechanics/4_ex/orange.php');
+die;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +13,5 @@
 </head>
 <body style='background-color: #ffff6e;'>
     
-<?php 
-
-header('Location: http://localhost/php_practice/php_bit_ex/7_web_mechanics/orange.php');
-die;
-
-
-?>
 </body>
 </html>

@@ -19,7 +19,7 @@ echo "<h3 style='color: white;'> 1. </h3>";
     <title>7_web_mechanics</title>
     <style>
         <?php
-        if (1 == ($_GET['color'] ?? '')) {
+        if ($_GET['color'] ?? false) {
             echo "body {background-color: red;}";
         } else {
             echo "body {background-color: black;}";
@@ -59,8 +59,8 @@ orange.php. Pademonstruokite veikimą.
 echo "<h3 style='color: white;'> 4. </h3>";
 
 ?>
-<a style='color: #ffff6e;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/lemon.php'>lemon.php</a> 
-<a style='color: orange;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/orange.php'>orange.php</a> 
+<a style='color: #ffff6e;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/4_ex/lemon.php'>lemon.php</a> 
+<a style='color: orange;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/4_ex/orange.php'>orange.php</a> 
 
 <?php
 /*
@@ -69,7 +69,12 @@ echo "<h3 style='color: white;'> 4. </h3>";
 tiesiog persikrautų, o PHP kodas (ne tiesiogiai html tagas!) naršyklę peradresuotų į kitą
 puslapį (iš raudono į mėlyną ir atvirkščiai).
 */
-echo '<h3> 5. </h3>';
+echo "<h3 style='color: white;'> 5. </h3>";
+?>
+<a style='color: LightSkyBlue;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/5_ex/blue.php'>blue.php</a> 
+<a style='color: LightCoral;' href='http://localhost/php_practice/php_bit_ex/7_web_mechanics/5_ex/red.php'>red.php</a> 
+
+<?php
 
 /*
 6. Padarykite puslapį su dviem mygtukais. Mygtukus įdėkite į dvi skairtingas formas- vieną
