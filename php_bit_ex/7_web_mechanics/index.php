@@ -122,6 +122,9 @@ echo "<a style='color: white;' href='./9ex.php'>9ex.php</a> <br/>";
 pažymėta, o kitas kiek iš vis buvo jų sugeneruota.
 */
 echo "<h3 style='color: white;'> 10. </h3>";
+
+echo "<a style='color: white;' href='./10ex.php'>10ex.php</a> <br/>";
+
 /*
 11. papildomas
 Suprogramuokite žaidimą. Žaidimas prasideda dviem laukeliais,
