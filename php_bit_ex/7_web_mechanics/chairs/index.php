@@ -1,9 +1,26 @@
 <?php
-    if ('POST' == $_SERVER['REQUEST_METHOD']) {
-        echo '<pre>';
-        print_r($_POST);
-        echo '</pre>';
-    }
+
+session_start();
+
+if ('POST' == $_SERVER['REQUEST_METHOD']) {
+    $_SESSION['chair'] = $_POST;
+
+    header('Location: ./index.php');
+    die;
+}
+if ('GET' == $_SERVER['REQUEST_METHOD'] && isset($_SESSION['chair'])) {
+    $_POST = $_SESSION['chair'];
+
+    echo '<pre>';
+    print_r($_POST);
+    Echo '<pre>';
+
+    echo '<pre>';
+    print_r($_SESSION);
+    Echo '<pre>';
+}
+
+
 
 ?>
 
@@ -55,6 +72,9 @@
             <th>Foldable:</th>
             <th>Chairs left in warehouse:</th>
         </tr>
+        
+        <?php if (isset($_POST['id'])) { ?>
+
         <tr>
             <td><?=$_POST['id']?></td>
             <td><?=$_POST['name']?></td>
@@ -62,6 +82,7 @@
             <td><?=$_POST['foldable']?></td>
             <td><?=$_POST['chairs_left']?></td>
         </tr>
+        <?php } ?>
 
     </table>
 </body>
