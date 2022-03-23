@@ -3,22 +3,26 @@
 session_start();
 
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
-    $_SESSION['chair'] = $_POST;
+    //$chair = [];
+    $chair['id'] = $_POST['id'];
+    $chair['name'] = $_POST['name'];
+    $chair['legs'] = $_POST['legs'];
+    $chair['foldable'] = $_POST['foldable'];
+    $chair['chairs_left'] = $_POST['chairs_left'];
+
+    $_SESSION['chairs'][] = $chair;
 
     header('Location: ./index.php');
     die;
 }
-if ('GET' == $_SERVER['REQUEST_METHOD'] && isset($_SESSION['chair'])) {
-    $_POST = $_SESSION['chair'];
+// if ('GET' == $_SERVER['REQUEST_METHOD'] && isset($_SESSION['chairs'])) {
 
-    echo '<pre>';
-    print_r($_POST);
-    Echo '<pre>';
+//     $chair = $_SESSION['chairs'];
 
-    echo '<pre>';
-    print_r($_SESSION);
-    Echo '<pre>';
-}
+//     echo '<pre>';
+//     print_r($_SESSION);
+//     Echo '<pre>';
+// }
 
 
 
@@ -73,15 +77,16 @@ if ('GET' == $_SERVER['REQUEST_METHOD'] && isset($_SESSION['chair'])) {
             <th>Chairs left in warehouse:</th>
         </tr>
         
-        <?php if (isset($_POST['id'])) { ?>
-
-        <tr>
-            <td><?=$_POST['id']?></td>
-            <td><?=$_POST['name']?></td>
-            <td><?=$_POST['legs']?></td>
-            <td><?=$_POST['foldable']?></td>
-            <td><?=$_POST['chairs_left']?></td>
-        </tr>
+        <?php if (isset($_SESSION['chairs'][0]['id'])) { ?>
+            <?php foreach($_SESSION['chairs'] as $chair) { ?>
+                <tr>
+                    <td><?=$chair['id']?></td>
+                    <td><?=$chair['name']?></td>
+                    <td><?=$chair['legs']?></td>
+                    <td><?=$chair['foldable']?></td>
+                    <td><?=$chair['chairs_left']?></td>
+                </tr>
+            <?php } ?>
         <?php } ?>
 
     </table>
