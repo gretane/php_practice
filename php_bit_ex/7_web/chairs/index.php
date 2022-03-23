@@ -2,26 +2,28 @@
 
 session_start();
 
+if (!isset($_SESSION['chairs'])){
+    $_SESSION['chairs'] = [];
+    $_SESSION['id'] = 1;
+}
+
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
     //$chair = [];
-    $chair['id'] = $_POST['id'];
+    $chair['id'] = $_SESSION['id'];
     $chair['name'] = $_POST['name'];
     $chair['legs'] = $_POST['legs'];
     $chair['foldable'] = $_POST['foldable'];
     $chair['chairs_left'] = $_POST['chairs_left'];
 
+    $_SESSION['id']++;
     $_SESSION['chairs'][] = $chair;
 
     header('Location: ./index.php');
     die;
 }
-// if ('GET' == $_SERVER['REQUEST_METHOD'] && isset($_SESSION['chairs'])) {
+// if ('GET' == $_SERVER['REQUEST_METHOD'] && ($_GET['id'] ?? false)) {
 
-//     $chair = $_SESSION['chairs'];
 
-//     echo '<pre>';
-//     print_r($_SESSION);
-//     Echo '<pre>';
 // }
 
 
@@ -51,9 +53,9 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 </head>
 <body>
     <form target="_self" method="post"> 
-        <label for="id">Chair ID: </label><br/>
-        <input type="text" name="id"><br/>
-        <label for="name">Name:</label><br/>
+        <!--<label for="id">Chair ID: </label><br/>-->
+        <!--<input type="text" name="id"><br/>-->
+        <label for="name">Chair:</label><br/>
         <input type="text" name="name"><br/>
         <label for="legs">Number of legs:</label><br/>
         <input type="number" name="legs"><br/><br/>
@@ -75,9 +77,12 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
             <th>Number of legs:</th>
             <th>Foldable:</th>
             <th>Chairs left in warehouse:</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         
-        <?php if (isset($_SESSION['chairs'][0]['id'])) { ?>
+        <?php if (isset($_SESSION['chairs'])) {
+            $chair['id'] = $_SESSION['id'] ?>
             <?php foreach($_SESSION['chairs'] as $chair) { ?>
                 <tr>
                     <td><?=$chair['id']?></td>
@@ -85,6 +90,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
                     <td><?=$chair['legs']?></td>
                     <td><?=$chair['foldable']?></td>
                     <td><?=$chair['chairs_left']?></td>
+                    <td><a href="?id=<?=$chair['id']?>">edit</a></td>
                 </tr>
             <?php } ?>
         <?php } ?>
