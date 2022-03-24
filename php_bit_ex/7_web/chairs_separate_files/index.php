@@ -1,75 +1,6 @@
 <?php
 
-session_start();
-
-if (!isset($_SESSION['chairs'])){
-    $_SESSION['chairs'] = [];
-    $_SESSION['id'] = 1;
-}
-
-if ('POST' == $_SERVER['REQUEST_METHOD'] && !isset($_POST['id'])) {  //&& isset($_POST['name'])
-    //$chair = [];
-    $chair['id'] = $_SESSION['id'];
-    $chair['name'] = $_POST['name'];
-    $chair['legs'] = $_POST['legs'];
-    $chair['foldable'] = $_POST['foldable'];
-    $chair['chairs_left'] = $_POST['chairs_left'];
-
-    $_SESSION['id']++;
-    $_SESSION['chairs'][] = $chair;
-
-    header('Location: ./index.php');
-    die;
-}
-if ('GET' == $_SERVER['REQUEST_METHOD'] && ($_GET['id'] ?? false)) {
-//take id
-//check witch chair has the id
-//if the chair fits the id 
-//show it in the form as value=""
-//button "change" in stead of add
-//after changing it set the post value to the chair with the id 
-    
-    foreach($_SESSION['chairs'] as $key) {
-        if ($_GET['id'] == $key['id']) {
-            $chair = $key;
-            break;
-        }
-    }
-
-}
-
-if ('POST' == $_SERVER['REQUEST_METHOD'] && !isset($_POST['name'])) {
-    foreach($_SESSION['chairs'] as $key => &$chair) {
-        if ($_POST['id'] == $chair['id']) {
-            unset($_SESSION['chairs'][$key]);
-            header('Location: ./index.php');
-            die;
-        }
-    }
-}
-
-if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['id'])) { // && isset($_POST['name'])
-    foreach($_SESSION['chairs'] as &$chair) {
-        if ($_POST['id'] == $chair['id']) {
-            $chair['name'] = $_POST['name'];
-            $chair['legs'] = $_POST['legs'];
-            $chair['foldable'] = $_POST['foldable'];
-            $chair['chairs_left'] = $_POST['chairs_left'];
-            header('Location: ./index.php');
-            die;
-        }
-    }
-
-    header('Location: ./index.php');
-    die;
-}
-
-
-// if ('GET' == $_SERVER['REQUEST_METHOD']) {
-//     echo '<pre>';
-//     print_r($_SESSION);
-//     echo '</pre>';
-// }
+include('./controller.php');
 
 ?>
 
@@ -131,9 +62,9 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['id'])) { // && isset($
         </tr>
         
         <?php $chair['id'] = $_SESSION['id'] ?>
-            <?php foreach($_SESSION['chairs'] as $chair) { ?>
+            <?php $count = 0;  foreach($_SESSION['chairs'] as $chair) { ?>
                 <tr>
-                    <td><?=$chair['id']?></td>
+                    <td><?= ++$count . "| id:" . $chair['id']?></td>
                     <td><?=$chair['name']?></td>
                     <td><?=$chair['legs']?></td>
                     <td><?=$chair['foldable']?></td>
