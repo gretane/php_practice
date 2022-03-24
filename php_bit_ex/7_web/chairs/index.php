@@ -7,7 +7,7 @@ if (!isset($_SESSION['chairs'])){
     $_SESSION['id'] = 1;
 }
 
-if ('POST' == $_SERVER['REQUEST_METHOD']) {
+if ('POST' == $_SERVER['REQUEST_METHOD'] && !isset($_POST['id']) && isset($_POST['name'])) {
     //$chair = [];
     $chair['id'] = $_SESSION['id'];
     $chair['name'] = $_POST['name'];
@@ -21,12 +21,58 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     header('Location: ./index.php');
     die;
 }
-// if ('GET' == $_SERVER['REQUEST_METHOD'] && ($_GET['id'] ?? false)) {
+if ('GET' == $_SERVER['REQUEST_METHOD'] && ($_GET['id'] ?? false)) {
+//take id
+//check witch chair has the id
+//if the chair fits the id 
+//show it in the form as value=""
+//button "change" in stead of add
+//after changing it set the post value to the chair with the id 
+    
+    foreach($_SESSION['chairs'] as $key) {
+        if ($_GET['id'] == $key['id']) {
+            $chair = $key;
+            break;
+        }
+    }
+
+}
+
+if ('POST' == $_SERVER['REQUEST_METHOD'] && !isset($_POST['name'])) {
+    echo 'delete';
+    foreach($_SESSION['chairs'] as $key => &$chair) {
+        if ($_POST['id'] == $chair['id']) {
+            unset($_SESSION['chairs'][$key]);
+            header('Location: ./index.php');
+            die;
+        }
+    }
+    header('Location: ./index.php');
+    die;
+}
+
+if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['id'])) { // && isset($_POST['name'])
+    foreach($_SESSION['chairs'] as &$chair) {
+        if ($_POST['id'] == $chair['id']) {
+            $chair['name'] = $_POST['name'];
+            $chair['legs'] = $_POST['legs'];
+            $chair['foldable'] = $_POST['foldable'];
+            $chair['chairs_left'] = $_POST['chairs_left'];
+            header('Location: ./index.php');
+            die;
+        }
+    }
+
+    header('Location: ./index.php');
+    die;
+}
 
 
+// if ('GET' == $_SERVER['REQUEST_METHOD']) {
+//     echo '<pre>';
+//     print_r($_SESSION);
+//     echo '</pre>';
 // }
-
-
 
 ?>
 
@@ -36,7 +82,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chairs crud</title>
+    <title>Chairs</title>
     <style>
         table {
         font-family: arial, sans-serif;
@@ -56,9 +102,9 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
         <!--<label for="id">Chair ID: </label><br/>-->
         <!--<input type="text" name="id"><br/>-->
         <label for="name">Chair:</label><br/>
-        <input type="text" name="name"><br/>
+        <input type="text" name="name" value="<?php echo isset($chair)? $chair['name'] : ''?>"><br/>
         <label for="legs">Number of legs:</label><br/>
-        <input type="number" name="legs"><br/><br/>
+        <input type="number" name="legs" value="<?php echo isset($chair)? $chair['legs'] : ''?>"><br/><br/>
         
         Foldable: <br/>
         <input type="radio" id="Yes" name="foldable" value="Yes">
@@ -66,8 +112,14 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
         <input type="radio" id="No" name="foldable" value="No">
         <label for="No">No</label><br/><br/>
         <label for="chairs_left">Number of chairs left in warehouse:</label><br/>
-        <input type="number" name="chairs_left"><br/>
-        <input type="submit" value="Add"><br/><br/>
+        <input type="number" name="chairs_left" value="<?php echo isset($chair)? $chair['chairs_left'] : ''?>"><br/>
+        
+        <?php if (!isset($chair)): ?>
+            <input type="submit" value="Add"><br/><br/>
+        <?php else: ?>
+            <input type="hidden" name="id" value="<?= $chair['id']?>">
+            <input type="submit" value="Save changes"><br/><br/>
+        <?php endif?>
     </form>
 
     <table>
@@ -91,6 +143,12 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
                     <td><?=$chair['foldable']?></td>
                     <td><?=$chair['chairs_left']?></td>
                     <td><a href="?id=<?=$chair['id']?>">edit</a></td>
+                    <td>
+                        <form action="" method="POST">
+                            <input type="hidden" name="id" value="<?= $chair['id']?>">
+                            <input type="submit" value="delete">
+                        </form>
+                    </td>
                 </tr>
             <?php } ?>
         <?php } ?>
