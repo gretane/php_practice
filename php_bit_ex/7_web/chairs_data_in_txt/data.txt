@@ -1,0 +1,1 @@
+{"2":{"id":3,"name":"Woody","legs":"2","foldable":"Yes","chairs_left":"24"},"3":{"id":4,"name":"Agave","legs":"4","foldable":"Yes","chairs_left":"14"}}
