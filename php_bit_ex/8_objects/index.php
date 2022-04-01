@@ -6,6 +6,25 @@ metodą kiekPririnktaAkmenu(). Sukurti kibiro objektą ir pademonstruoti
 akmenų rinkimą į kibirą ir rezultatų išvedimą.
 */
 echo '<h3> 1. </h3>';
+
+echo "<a href='./Kibiras1.php'>Kibiras1.php</a> <br/>";
+
+require __DIR__ . '/Kibiras1.php';
+
+$kibiras = new Kibiras1();
+
+var_dump ($kibiras);
+echo '<br/>';
+
+$kibiras->kiekPririnktaAkmenu();
+echo '<br/>';
+$kibiras->prideti1Akmeni();
+echo '<br/>';
+$kibiras->pridetiDaugAkmenu(16);
+echo '<br/>';
+$kibiras->kiekPririnktaAkmenu();
+
+
 /*
 2. Sukurti klasę Piniginė. Sukurti dvi privačias savybes popieriniaiPinigai ir
 metaliniaiPinigai. Parašyti metodą ideti($kiekis), kuris prideda pinigus į
