@@ -55,7 +55,44 @@ visuose Kibiras2 objektuose. Sukurkite geterį objekte, ir statinį geterį
 klasėje, kuris išvestų akmenuKiekisVisuoseKibiruose reikšmę. Sukurkite tris
 kibirus ir pademonstruokite veikimą.
 */
+
 echo '<h3> 3. </h3>';
+
+require __DIR__ . '/Kibiras2.php';
+
+$bucket1 = new Kibiras2();
+
+$bucket1->prideti1Akmeni();
+echo '<br/>';
+$bucket1->pridetiDaugAkmenu(3);
+echo '<br/>';
+$bucket1->kiekPririnktaAkmenu();
+echo '<br/>';
+$bucket1->getVisuoseKibiruose();
+echo '<br/>';
+echo '<br/>';
+$bucket2 = new Kibiras2();
+
+$bucket2->prideti1Akmeni();
+echo '<br/>';
+$bucket2->pridetiDaugAkmenu(4);
+echo '<br/>';
+$bucket2->kiekPririnktaAkmenu();
+echo '<br/>';
+$bucket2->getVisuoseKibiruose();
+echo '<br/>';
+echo '<br/>';
+$bucket3 = new Kibiras2();
+
+$bucket3->prideti1Akmeni();
+echo '<br/>';
+$bucket3->pridetiDaugAkmenu(3);
+echo '<br/>';
+$bucket3->kiekPririnktaAkmenu();
+echo '<br/>';
+$bucket3->getVisuoseKibiruose();
+echo '<br/>';
+
 /*
 4. (EXTENDS) Sukurkite klasę kaip pirmame uždavinyje ir pavadinkite Kibiras3.
 Sukurkite dar vieną klasę KibirasNePo1, kuri extendina klasę Kibiras3.
@@ -63,7 +100,11 @@ KibirasNePo1 turi naudoti visus tėvinius metodus, bet metodas
 Prideti1Akmeni() turi pridėti ne vieną o atsitiktinį akmenų kiekį nuo 2 iki 5.
 Sukurkite KibirasNePo1 objektą ir pademonstruokite veikimą.
 */
+
 echo '<h3> 4. </h3>';
+
+
+
 /*
 5. Sukurti klasę Stikline. Sukurti privačią savybę turis ir kiekis. Parašyti
 metodą ipilti($kiekis), kuris keistų savybę kiekis. Jeigu stiklinės tūris yra
