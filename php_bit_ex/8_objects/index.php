@@ -34,7 +34,19 @@ kuris suskaičiuotų ir atspausdintų popieriniaiPinigai ir metaliniaiPinigai
 sumą. Sukurti klasės objektą ir pademonstruoti veikimą. Nesvarbu kokios
 popierinės kupiūros ir metalinės monetos egzistuoja realiame pasaulyje.
 */
+
 echo '<h3> 2. </h3>';
+
+require __DIR__ . '/Wallet.php';
+
+$redWallet = new Wallet();
+
+$redWallet->put(2);
+$redWallet->put(20);
+$redWallet->put(1);
+$redWallet->put(56);
+$redWallet->count();
+
 /*
 3. (STATIC) Sukurkite klasę kaip pirmame uždavinyje ir pavadinkite Kibiras2.
 Patobulinkite pridėdami statinę privačią savybę
