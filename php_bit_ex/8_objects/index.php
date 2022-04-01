@@ -156,7 +156,19 @@ taip: valgomas- true arba false, sukirmijes- true arba false ir svoris- nuo 5 ik
 valgomas dėti į Krepsi objektą, kol bus pririnktas pilnas krepšys nesukirmijusių
 ir valgomų grybų (gali būti biški daugiau nei dydis).
 */
+
 echo '<h3> 6. </h3>';
+
+require __DIR__ . '/Grybas.php';
+// require __DIR__ . '/Basket.php';
+
+$mushroom = new Mushroom();
+
+var_dump($mushroom);
+
+$basket = new Basket();
+
+
 /*
 7. Patobulinti 2 uždavinio piniginę taip, kad būtų galima skaičiuoti kiek
 piniginėje yra monetų ir kiek banknotų. Parašyti metodą monetos(), kuris
