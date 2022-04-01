@@ -103,6 +103,18 @@ Sukurkite KibirasNePo1 objektą ir pademonstruokite veikimą.
 
 echo '<h3> 4. </h3>';
 
+require __DIR__ . '/Kibiras3.php';
+
+$kibirasNePo1 = new KibirasNePo1();
+
+$kibirasNePo1->prideti1Akmeni();
+echo '<br/>';
+$kibirasNePo1->prideti1Akmeni();
+echo '<br/>';
+$kibirasNePo1->pridetiDaugAkmenu(3);
+echo '<br/>';
+$kibirasNePo1->kiekPririnktaAkmenu();
+echo '<br/>';
 
 
 /*
