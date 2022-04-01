@@ -126,7 +126,27 @@ netelpa, nuteka per stalo viršų. Sukurti tris stiklinės objektus su tūriais:
 100. Didžiausią pripilti pilną ir tada ją ispilti į mažesnę stiklinę, o mažesnę į dar
 mažesnę.
 */
+
 echo '<h3> 5. </h3>';
+
+require __DIR__ . '/Glass.php';
+
+$glass1 = new Glass(200);
+$glass1->pourInto(200);
+$amountGlass1 = $glass1->spill();
+echo $amountGlass1;
+
+$glass2 = new Glass(150);
+$glass2->pourInto($amountGlass1);
+$amountGlass2 = $glass2->spill();
+echo $amountGlass2;
+
+
+$glass3 = new Glass(100);
+$glass3->pourInto($amountGlass1);
+$amountGlass3 = $glass3->spill();
+echo $amountGlass3;
+
 /*
 6. Sukurti klasę Grybas. Sukurti klasę Krepsys. Krepsys turi konstantą dydis
 lygią 500. Grybas turi tris privačias savybes: valgomas, sukirmijes,
