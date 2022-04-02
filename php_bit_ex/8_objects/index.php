@@ -196,32 +196,35 @@ echo '</pre>';
 
 echo $overallWeight . '<br/>';
 
-echo 'All mushrooms: <br/><pre>';
-print_r($allMushrooms);
-echo '</pre>';
+// echo 'All mushrooms: <br/><pre>';
+// print_r($allMushrooms);
+// echo '</pre>';
 
-echo 'Bad ones: <br/><pre>';
-print_r($noGood);
-echo '</pre>';
 
 /*
-7. Patobulinti 2 uždavinio piniginę taip, kad būtų galima skaičiuoti kiek
-piniginėje yra monetų ir kiek banknotų. Parašyti metodą monetos(), kuris
-skaičiuotų kiek yra piniginėje monetų ir metoda banknotai() - popierinių
-pinigų skaičiavimui.
-*/
-echo '<h3> 7. </h3>';
-/*
-8. (STATIC) Sukurkite klasę MarsoPalydovas. Kontroliuokite objekto kūrimą iš
+7. (STATIC) Sukurkite klasę MarsoPalydovas. Kontroliuokite objekto kūrimą iš
 klasės naudodami statinį metodą. Padarykite taip, kad iš viso būtų galima
 sukurti tik du objektus iš šitos klasės. Pirmam sukuriamam objektui įrašykite
 privačią savybę title lygią stringui “Deimas”, o antram tokią pat savybę tik
 lygią stringui “Fobas”. Bandant sukurti trečią objektą, turėtų būti grąžinamas
 vienas iš anksčiau sukurtų objektų parinktas atsitiktine tvarka.
 */
-echo '<h3> 8. </h3>';
+echo '<h3> 7. </h3>';
+
+require __DIR__ . '/MarsSatellite.php';
+
+$marsArray = [];
+
+for($i = 0; $i < 7; $i++) {
+    $marsArray[$i] = MarsSatellite::createMarsSatellite();
+}
+
+echo '<pre>';
+var_dump($marsArray);
+echo '</pre>';
+
 /*
-9. (STATIC) Sukurti klasę Tenisininkas. Klasė Tenisininkas turi privačią savybę
+8. (STATIC) Sukurti klasę Tenisininkas. Klasė Tenisininkas turi privačią savybę
 vardas, privačią savybę kamuoliukas (true jei turi ir false jei ne) privačią
 static savybę zaidejas1, privačią static savybę zaidejas2 (žaidėjų
 objektams saugoti) Klasė turi tokius metodus:
@@ -235,4 +238,4 @@ statinį metodą zaidimoPradzia() ir kažkuriam žaidėjui priskirti
 kamuoliuką. Žaidėjo objekto metodu perduotiKamuoliuka() perduoti
 kamuoliuką kitam žaidėjui ir grąžinti atgal iš kito žaidėjo objekto
 */
-echo '<h3> 9. </h3>';
+echo '<h3> 8. </h3>';
