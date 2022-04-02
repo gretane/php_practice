@@ -238,4 +238,25 @@ statinį metodą zaidimoPradzia() ir kažkuriam žaidėjui priskirti
 kamuoliuką. Žaidėjo objekto metodu perduotiKamuoliuka() perduoti
 kamuoliuką kitam žaidėjui ir grąžinti atgal iš kito žaidėjo objekto
 */
+
 echo '<h3> 8. </h3>';
+
+require __DIR__ . '/TennisPlayer.php';
+
+$hasBall = TennisPlayer::startOfGame();
+
+echo '<pre>';
+var_dump($hasBall);
+echo '</pre>';
+
+$hasBall = $hasBall->passBall();
+
+echo '<pre>';
+var_dump($hasBall);
+echo '</pre>';
+
+$hasBall = $hasBall->passBall();
+
+echo '<pre>';
+var_dump($hasBall);
+echo '</pre>';
