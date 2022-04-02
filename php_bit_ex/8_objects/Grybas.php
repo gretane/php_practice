@@ -24,4 +24,16 @@ class Mushroom
         $this->wormEaten = $wormEaten;
         $this->weight = $weight;
     }
+
+    function getEdible() {
+        return $this->edible;
+    }
+
+    function getWormEaten() {
+        return $this->wormEaten;
+    }
+
+    function getWeight() {
+        return $this->weight;
+    }
 }

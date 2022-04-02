@@ -160,14 +160,49 @@ ir valgomų grybų (gali būti biški daugiau nei dydis).
 echo '<h3> 6. </h3>';
 
 require __DIR__ . '/Grybas.php';
-// require __DIR__ . '/Basket.php';
+require __DIR__ . '/Basket.php';
 
-$mushroom = new Mushroom();
-
-var_dump($mushroom);
 
 $basket = new Basket();
 
+//generate mushrooms
+
+$size = $basket::SIZE;
+$overallWeight = 0;
+$edible = 0;
+$wormEaten = 0;
+$weight = 0;
+// $allMushrooms = [];
+
+for ($i = 0; $overallWeight < $size; $i++) {
+    $mushroom = new Mushroom();
+    $edible = $mushroom->getEdible();
+    $wormEaten = $mushroom->getWormEaten();
+    // $allMushrooms[$i] = $mushroom;
+
+    if ($edible == 1 && $wormEaten == 0) {
+        $basket->setArrayElement($mushroom);
+        $weight = $mushroom->getWeight();
+        $overallWeight += $weight;
+    }
+
+
+}
+$array = $basket->getArray();
+
+echo 'Good mushrooms: <br/><pre>';
+print_r($array);
+echo '</pre>';
+
+echo $overallWeight . '<br/>';
+
+echo 'All mushrooms: <br/><pre>';
+print_r($allMushrooms);
+echo '</pre>';
+
+echo 'Bad ones: <br/><pre>';
+print_r($noGood);
+echo '</pre>';
 
 /*
 7. Patobulinti 2 uždavinio piniginę taip, kad būtų galima skaičiuoti kiek

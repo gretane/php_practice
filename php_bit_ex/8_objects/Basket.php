@@ -10,21 +10,23 @@ valgomas dėti į Krepsi objektą, kol bus pririnktas pilnas krepšys nesukirmij
 ir valgomų grybų (gali būti biški daugiau nei dydis).
 */
 
-// require __DIR__ . '/Grybas.php';
 
-// class Basket
-// {
-//     public $size = 50;
-//     public $mushroomArray = [];
+class Basket
+{
+    const SIZE = 500;
+    private $mushroomArray = [];
 
-//     // public function __construct($size) {
-//     //     $size = rand(5);
-//     // }
+    function setArrayElement($mushroom) {
+        $this->mushroomArray[] = $mushroom;
+    }
 
-//     function addMushroom() {
-//         $size = $this->size;
-//         for($i = 0; $i < $size; $i++) {
+    function getArray() {
+        return $this->mushroomArray;
+    }
 
-//         }
-//     }
-// }
+    // function getArrayEl() {
+    //     $element = sizeof($this->mushroomArray) - 1;
+    //     return $this->mushroomArray[$element];
+    // }
+
+}
