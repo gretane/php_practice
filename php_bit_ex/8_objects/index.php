@@ -1,4 +1,11 @@
 <?php
+
+// doesn't know DIR
+
+// spl_autoload_register(function($name) {
+//         require _DIR_ . "/$name.php";
+// });
+
 /*
 Sukurti klasę Kibiras1. Sukurti protected savybę akmenuKiekis. Parašyti šiai
 savybei metodus prideti1Akmeni() pridetiDaugAkmenu($kiekis) ir
@@ -243,20 +250,20 @@ echo '<h3> 8. </h3>';
 
 require __DIR__ . '/TennisPlayer.php';
 
-$hasBall = TennisPlayer::startOfGame();
+$startingPlayer = TennisPlayer::startOfGame();
 
-echo '<pre>';
-var_dump($hasBall);
+echo 'startingPlayer <pre>';
+var_dump($startingPlayer);
 echo '</pre>';
 
-$hasBall = $hasBall->passBall();
+$anotherPlayer = $startingPlayer->passBall();
 
-echo '<pre>';
-var_dump($hasBall);
+echo 'next player<pre>';
+var_dump($anotherPlayer);
 echo '</pre>';
 
-$hasBall = $hasBall->passBall();
+$startingPlayer = $anotherPlayer->passBall();
 
-echo '<pre>';
-var_dump($hasBall);
+echo 'starting player <pre>';
+var_dump($startingPlayer);
 echo '</pre>';

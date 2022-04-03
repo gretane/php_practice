@@ -48,16 +48,18 @@ class TennisPlayer
     }
 
     public function passBall() {
-        if (TennisPlayer::$player1->ball == 1) {
-            echo $this->name . ' passes ball to Thomas. <br/>';
+        if (TennisPlayer::$player1->ball == 1 && TennisPlayer::$player2->ball == 0) {
+            echo TennisPlayer::$player1->name . ' passes ball to Thomas. <br/>';
             TennisPlayer::$player1->ball == 0;
             TennisPlayer::$player2->ball == 1;
             return TennisPlayer::$player2;
-        } else {
-            echo $this->name . ' passes ball to Bella. <br/>';
+        } else if (TennisPlayer::$player2->ball == 1 && TennisPlayer::$player1->ball == 0){
+            echo TennisPlayer::$player2->name . ' passes ball to Bella. <br/>';
             TennisPlayer::$player1->ball == 1;
             TennisPlayer::$player2->ball == 0;
             return TennisPlayer::$player1;
+        } else {
+            echo 'Something went wrong. <br/>';
         }
     }
 
