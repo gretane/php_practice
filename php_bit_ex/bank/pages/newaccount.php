@@ -1,3 +1,10 @@
+<?php
+if ('POST' == $_SERVER['REQUEST_METHOD']) {
+    header('Location: http://localhost/php_practice/php_bit_ex/bank/');
+    die;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,21 +16,21 @@
 <body>
 
     <?php
-    include 'menu.php';
+    include '../menu.php';
     ?>
 
     <section>
-        <form action="#" method="POST">
+        <form target="_self" method="POST">
             <fieldset>
-                <legend>Personalia:</legend>
+                <legend>Create new account:</legend>
                 <label for="fname">First name:</label>
                 <input type="text" id="fname" name="fname"><br><br>
                 <label for="lname">Last name:</label>
                 <input type="text" id="lname" name="lname"><br><br>
-                <label for="email">Account number:</label>
-                <input type="email" id="email" name="email"><br><br>
-                <label for="birthday">Personal code:</label>
-                <input type="date" id="birthday" name="birthday"><br><br>
+                <label for="account">Account number:</label>
+                <input type="account" id="account" name="account"><br><br>
+                <label for="pcode">Personal code:</label>
+                <input type="number" id="pcode" name="pcode"><br><br>
                 <input type="submit" value="Submit">
             </fieldset>
         </form> 

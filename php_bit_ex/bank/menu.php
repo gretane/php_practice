@@ -2,7 +2,7 @@
 ?>
     <section>
         <nav>
-            <a href="#">Accounts list</a> |
-            <a href="#">New account</a> |
+            <a href="./index.php">Accounts list</a> |
+            <a href="./newaccount.php">New account</a> |
         </nav> 
     </section>

@@ -25,7 +25,7 @@ e. Visi puslapiai turi bendrą meniu su nuorodom
 <body>
 
     <?php
-    include 'menu.php';
+    include '../menu.php';
     ?>
 
     <section>
@@ -41,21 +41,36 @@ e. Visi puslapiai turi bendrą meniu su nuorodom
             <tbody>
                 <tr>
                     <td>8569123365</td>
-                    <td><a href="#">Add</a></td>
-                    <td><a href="#">Withdraw</a></td>
-                    <td><a href="#">Delete</a></td>
+                    <td><a href="./add.php">Add</a></td>
+                    <td><a href="./withdraw.php">Withdraw</a></td>
+                    <td>
+                        <form method="POST" action="#">
+                            <!-- @csrf -->
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 <tr>
                     <td>8569123365</td>
-                    <td><a href="#">Add</a></td>
-                    <td><a href="#">Withdraw</a></td>
-                    <td><a href="#">Delete</a></td>
+                    <td><a href="./add.php">Add</a></td>
+                    <td><a href="./withdraw.php">Withdraw</a></td>
+                    <td>
+                        <form method="POST" action="#">
+                            <!-- @csrf -->
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 <tr>
                     <td>8569123365</td>
-                    <td><a href="#">Add</a></td>
-                    <td><a href="#">Withdraw</a></td>
-                    <td><a href="#">Delete</a></td>
+                    <td><a href="./add.php">Add</a></td>
+                    <td><a href="./withdraw.php">Withdraw</a></td>
+                    <td>
+                        <form method="POST" action="#">
+                            <!-- @csrf -->
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
