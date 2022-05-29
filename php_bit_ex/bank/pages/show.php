@@ -1,5 +1,3 @@
-<?php
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,22 +16,26 @@
         <table>
             <thead>
                 <tr>
-                <th>Account number</th>
-                <th>Add money</th>
-                <th>Withdraw money</th>
-                <th>Details</th>
+                    <th>Add money</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>object->(property)accountNumber</td>
-                    <td><a href="./add.php">Add</a></td>
-                    <td><a href="./withdraw.php">Withdraw</a></td>
-                    <td><a href="./show.php">Show details</a></td>
+                    <td>Name Surname</td>
+                    <td>Money left</td>
+                </tr>
+                <tr>
+                    <td>
+                        <form method="POST" action="#">
+                            <!-- @csrf -->
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </section>
 
+    <!-- success message. Successfully added-->
 </body>
 </html>

@@ -10,8 +10,12 @@
 
     <?php
     include '../menu.php';
+    
+    if ('POST' == $_SERVER['REQUEST_METHOD']) {
+        echo 'Money were successfully added!';
+    }
+    
     ?>
-
     <section>
         <table>
             <thead>
