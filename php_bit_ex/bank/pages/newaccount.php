@@ -2,8 +2,6 @@
 
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
-    include '../database/accounts.php';
-
     function check_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
@@ -11,78 +9,87 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
         return $data;
     }    
 
-    $firstName =  check_input($_POST["fname"]);
-    $lastName = check_input($_POST['lname']);
-    $accountNo = check_input($_POST['account']);
-    $personalNo = check_input($_POST['pcode']);
 
-    if (empty($firstName) || empty($lastName) || empty($accountNo) || empty($personalNo)) 
-    {    
-        if (empty($firstName)) {
-            $nameErr = "Name is required";
-            echo $nameErr;
-        }
+    // if (empty($firstName) || empty($lastName) || empty($accountNo) || empty($personalNo)) 
+    // {    
+    //     if (empty($firstName)) {
+    //         $nameErr = "Name is required";
+    //         echo $nameErr;
+    //     }
 
-        if (empty($lastName)) {
-            $surnameErr = "Surname is required";
-            echo $surnameErr;
-        }
+    //     if (empty($lastName)) {
+    //         $surnameErr = "Surname is required";
+    //         echo $surnameErr;
+    //     }
 
-        if (empty($accountNo)) {
-            $accErr = "Account number is required";
-            echo $accErr;
-        }
-        if (empty($personalNo)) {
-            $codeErr = "Personal code is required";
-            echo $codeErr;
-        }
+    //     if (empty($accountNo)) {
+    //         $accErr = "Account number is required";
+    //         echo $accErr;
+    //     }
+    //     if (empty($personalNo)) {
+    //         $codeErr = "Personal code is required";
+    //         echo $codeErr;
+    //     }
 
-    } elseif (
-      strlen($firstName) < 2 || !preg_match("/^[a-zA-Z-' ]*$/", $firstName) //Lithuanian letters
-      || strlen($lastName) < 2 || !preg_match("/^[a-zA-Z-' ]*$/", $lastName) //Lithuanian letters
-      || !preg_match("/^LT[0-9]18/", $accountNo) 
-      || !preg_match("/^[1-6][0-9]{10}/", $personalNo) //|| !checkdate($personalStr)
-    )
-    {
-      //name
-        if (strlen($firstName) < 2 || !preg_match("/^[a-zA-Z-' ]*$/", $firstName))  //Lithuanian letters
-        {
-            $nameErr = "Valid name is required";
-            echo $nameErr;
-        }
-          //last name
-        if ((strlen($lastName) < 2) || !preg_match("/^[a-zA-Z-' ]*$/", $lastName)) //Lithuanian letters
-        {
-            $surnameErr = "Valid surname is required";
-            echo $surnameErr;
-        } 
+    // } elseif (
+    //   strlen($firstName) < 2 || !preg_match("/^[a-zA-Z-' ]*$/", $firstName) //Lithuanian letters
+    //   || strlen($lastName) < 2 || !preg_match("/^[a-zA-Z-' ]*$/", $lastName) //Lithuanian letters
+    //   || !preg_match("/^LT[0-9]18/", $accountNo) 
+    //   || !preg_match("/^[1-6][0-9]{10}/", $personalNo) //|| !checkdate($personalStr)
+    // )
+    // {
+    //   //name
+    //     if (strlen($firstName) < 2 || !preg_match("/^[a-zA-Z-' ]*$/", $firstName))  //Lithuanian letters
+    //     {
+    //         $nameErr = "Valid name is required";
+    //         echo $nameErr;
+    //     }
+    //       //last name
+    //     if ((strlen($lastName) < 2) || !preg_match("/^[a-zA-Z-' ]*$/", $lastName)) //Lithuanian letters
+    //     {
+    //         $surnameErr = "Valid surname is required";
+    //         echo $surnameErr;
+    //     } 
 
-        // Lithuanian account number
-        if (!preg_match("/^LT[0-9]{18}/", $accountNo)) 
-        { 
-            $accErr = "Valid account number is required";
-            echo $accErr;
-        } 
+    //     // Lithuanian account number
+    //     if (!preg_match("/^LT[0-9]{18}/", $accountNo)) 
+    //     { 
+    //         $accErr = "Valid account number is required";
+    //         echo $accErr;
+    //     } 
 
-        // Personal code
-        if (!preg_match("/^[1-6][0-9]{10}/", $personalNo)) // || !checkdate($personalStr)
-        {
-            $personalErr = "Valid account number is required";
-            echo $personalErr;
-        }
-    } else 
-    {
-        $insertData = "";
+    //     // Personal code
+    //     if (!preg_match("/^[1-6][0-9]{10}/", $personalNo)) // || !checkdate($personalStr)
+    //     {
+    //         $personalErr = "Valid account number is required";
+    //         echo $personalErr;
+    //     }
+    // } else 
+    // {
+    //     $servername = "localhost";
+    //     $username = "root";
+    //     $password = "";
+    //     $dbname = "bank";
+    
+    //     // Create connection
+    //     $conn = new mysqli($servername, $username, $password, $dbname);
+    //     // Check connection
+    //     if ($conn->connect_error) {
+    //     die("Connection failed: " . $conn->connect_error);
+    //     }
+    
+    //     $sql = "INSERT INTO accounts (firstname, lastname, account_number, personal_code)
+    //     VALUES ('$firstName', '$lastName', '$accountNo', $personalNo)";
+    
+    //     if ($conn->query($sql) === TRUE) {
+    //     echo "New record created successfully";
+    //     } else {
+    //     echo "Error: " . $sql . "<br>" . $conn->error;
+    //     }
+    
+    //     $conn->close();
 
-        $insertData = "INSERT INTO accounts (firstname, lastname, account_number, personal_code) VALUES ( :firstName, :lastName, :account_number, :personal_code)";
-
-        $values = [":firstName" => $firstName, ":lastName" => $lastName, ":accountNo" => $accountNo, ":personalNo" => $personalNo];
-        $rsInsert = $conn->prepare($insertData);
-
-        $rsInsert->execute($values);
-        echo "New record created successfully";
-
-    }
+    // }
 
     // header('Location: http://localhost/php_practice/php_bit_ex/bank/pages');
     // die;
