@@ -1,11 +1,20 @@
 <?php
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
-      
-    $firstName =  check_input($_POST["fname"]);
-    $lastName = $_POST['lname'];
-    $accountNo = $_POST['account'];
-    $personalNo = $_POST['pcode'];
 
+    function check_input($data) {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
+    }    
+
+    $firstName =  check_input($_POST["fname"]);
+    $lastName = check_input($_POST['lname']);
+    $accountNo = check_input($_POST['account']);
+    $personalNo = check_input($_POST['pcode']);
+    $personalStr = substr($personalNo, 1, 6);
+
+    echo $personalStr;
 
     if (empty($firstName) || empty($lastName) || empty($accountNo) || empty($personalNo)) 
     {    
@@ -28,21 +37,43 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
           echo $codeErr;
         }
 
+
+        //name
     } elseif (strlen($firstName) < 2)
     {
-      $nameErr = "Name is too short";
+      $nameErr = "Valid name is required";
       echo $nameErr;
       
-
     } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $firstName)) 
     {
-      $nameErr = "Only letters and white space allowed";
+      $nameErr = "Valid name is required";
+      echo $nameErr;
 
+
+      //last name
     } elseif (strlen($lastName) < 2)
     {
-      $surnameErr = "Surname is too short";
+      $surnameErr = "Valid surname is required";
       echo $surnameErr;
-    } else
+
+    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $lastName)) 
+    {
+      $surnameErr = "Valid surname is required";
+      echo $surnameErr;
+
+
+      // Lithuanian account number
+    } elseif (!preg_match("/^LT[0-9]18/", $accountNo)) { 
+
+          $accErr = "Valid account number is required";
+          echo $accErr;
+
+
+      // Personal code: 11 numbers
+    } elseif (!preg_match("/^[1-6][0-9]{10}/", $personalNo) && checkdate($personalStr)) 
+        $personalErr = "Valid account number is required";
+        echo $personalErr;
+
     {
         $servername = "localhost";
         $username = "root";
@@ -69,12 +100,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
       $connect = null;
     }
 
-    function check_input($data) {
-      $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    }
+ 
     
 
     // header('Location: http://localhost/php_practice/php_bit_ex/bank/pages');
