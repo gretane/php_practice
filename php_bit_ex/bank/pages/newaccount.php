@@ -1,45 +1,33 @@
 <?php
+
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
-    header('Location: http://localhost/php_practice/php_bit_ex/bank/');
-    die;
-    }
-
-
-// using PDO. use existing database
     
-$servername = "localhost";
-$username = "root";
-$password = "";
+    $insertData = "";
+    $firstName = $_POST['fname'];
+    $lastName = $_POST['lname'];
+    $accountNo = $_POST['account'];
+    $personalNo = $_POST['pcode'];
 
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=bank", $username, $password);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-  echo "Connected successfully";
-} catch(PDOException $e) {
-  echo "Connection failed: " . $e->getMessage(); // also could ->getCode() (shows error code)
+    try {
+      $connect = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      // set the PDO error mode to exception
+      $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      $insertData = "INSERT INTO accounts (firstname, lastname, account_number, personal_code)
+      VALUES ($firstName, $lastName, $accountNo, $personalNo)";
+      // use exec() because no results are returned
+      $connect->exec($insertData);
+      echo "New record created successfully";
+
+      // header('Location: http://localhost/php_practice/php_bit_ex/bank/pages');
+      // die;
+      } catch(PDOException $e) {
+        echo $insertData . "<br>" . $e->getMessage();
+      }
+      
+  $connect = null;
 }
 
-/* create database
-
-$servername = "localhost";
-$username = "username";
-$password = "password";
-
-try {
-  $conn = new PDO("mysql:host=$servername", $username, $password);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $sql = "CREATE DATABASE myDBPDO";
-  // use exec() because no results are returned
-  $conn->exec($sql);
-  echo "Database created successfully<br>";
-} catch(PDOException $e) {
-  echo $sql . "<br>" . $e->getMessage();
-}
-
-$conn = null;
-*/
 
 ?>
 
@@ -58,7 +46,7 @@ $conn = null;
     ?>
 
     <section>
-        <form target="_self" method="POST">
+        <form method="POST">
             <fieldset>
                 <legend>Create new account:</legend>
                 <label for="fname">First name:</label>
