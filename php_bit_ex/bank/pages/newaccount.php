@@ -1,31 +1,84 @@
 <?php
-
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
-    
-    $insertData = "";
-    $firstName = $_POST['fname'];
+      
+    $firstName =  check_input($_POST["fname"]);
     $lastName = $_POST['lname'];
     $accountNo = $_POST['account'];
     $personalNo = $_POST['pcode'];
 
-    try {
-      $connect = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-      // set the PDO error mode to exception
-      $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      $insertData = "INSERT INTO accounts (firstname, lastname, account_number, personal_code)
-      VALUES ($firstName, $lastName, $accountNo, $personalNo)";
-      // use exec() because no results are returned
-      $connect->exec($insertData);
-      echo "New record created successfully";
+    if (empty($firstName) || empty($lastName) || empty($accountNo) || empty($personalNo)) 
+    {    
+        if (empty($firstName)) {
+          $nameErr = "Name is required";
+          echo $nameErr;
+        }
 
-      // header('Location: http://localhost/php_practice/php_bit_ex/bank/pages');
-      // die;
-      } catch(PDOException $e) {
-        echo $insertData . "<br>" . $e->getMessage();
-      }
+        if (empty($lastName)) {
+          $surnameErr = "Surname is required";
+          echo $surnameErr;
+        }
+
+        if (empty($accountNo)) {
+          $accErr = "Account number is required";
+          echo $accErr;
+        }
+        if (empty($personalNo)) {
+          $codeErr = "Personal code is required";
+          echo $codeErr;
+        }
+
+    } elseif (strlen($firstName) < 2)
+    {
+      $nameErr = "Name is too short";
+      echo $nameErr;
       
-  $connect = null;
+
+    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $firstName)) 
+    {
+      $nameErr = "Only letters and white space allowed";
+
+    } elseif (strlen($lastName) < 2)
+    {
+      $surnameErr = "Surname is too short";
+      echo $surnameErr;
+    } else
+    {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "bank";
+        $sql = "";
+        $insertData = "";
+
+        try {
+          $connect = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+          // set the PDO error mode to exception
+          $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+          $insertData = "INSERT INTO accounts (firstname, lastname, account_number, personal_code)
+          VALUES ($firstName, $lastName, $accountNo, $personalNo)";
+          // use exec() because no results are returned
+          $connect->exec($insertData);
+          echo "New record created successfully";
+
+          } catch(PDOException $e) {
+            echo $insertData . "<br>" . $e->getMessage();
+          }
+          
+      $connect = null;
+    }
+
+    function check_input($data) {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
+    }
+    
+
+    // header('Location: http://localhost/php_practice/php_bit_ex/bank/pages');
+    // die;
 }
 
 

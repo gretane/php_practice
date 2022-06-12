@@ -18,6 +18,7 @@ try {
     lastname VARCHAR(30) NOT NULL,
     account_number VARCHAR(50) NOT NULL,
     personal_code VARCHAR(50) NOT NULL,
+    balance VARCHAR(50) DEFAULT 0,
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
 
