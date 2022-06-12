@@ -1,79 +1,77 @@
 <?php
+
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
-    function check_input($data) {
+  function check_input($data) {
       $data = trim($data);
       $data = stripslashes($data);
       $data = htmlspecialchars($data);
       return $data;
-    }    
+  }    
 
-    $firstName =  check_input($_POST["fname"]);
-    $lastName = check_input($_POST['lname']);
-    $accountNo = check_input($_POST['account']);
-    $personalNo = check_input($_POST['pcode']);
-    $personalStr = substr($personalNo, 1, 6);
+  $firstName =  check_input($_POST["fname"]);
+  $lastName = check_input($_POST['lname']);
+  $accountNo = check_input($_POST['account']);
+  $personalNo = check_input($_POST['pcode']);
+  $personalStr = substr($personalNo, 1, 6);
 
-    echo $personalStr;
+  echo $personalStr;
 
     if (empty($firstName) || empty($lastName) || empty($accountNo) || empty($personalNo)) 
     {    
         if (empty($firstName)) {
-          $nameErr = "Name is required";
-          echo $nameErr;
+            $nameErr = "Name is required";
+            echo $nameErr;
         }
 
         if (empty($lastName)) {
-          $surnameErr = "Surname is required";
-          echo $surnameErr;
+            $surnameErr = "Surname is required";
+            echo $surnameErr;
         }
 
         if (empty($accountNo)) {
-          $accErr = "Account number is required";
-          echo $accErr;
+            $accErr = "Account number is required";
+            echo $accErr;
         }
         if (empty($personalNo)) {
-          $codeErr = "Personal code is required";
-          echo $codeErr;
+            $codeErr = "Personal code is required";
+            echo $codeErr;
         }
 
-
-        //name
-    } elseif (strlen($firstName) < 2)
+    } elseif (
+      strlen($firstName) < 2 || !preg_match("/^[a-zA-Z-' ]*$/", $firstName) //Lithuanian letters
+      || strlen($lastName) < 2 || !preg_match("/^[a-zA-Z-' ]*$/", $lastName) //Lithuanian letters
+      || !preg_match("/^LT[0-9]18/", $accountNo) 
+      || !preg_match("/^[1-6][0-9]{10}/", $personalNo)|| !checkdate($personalStr)
+    )
     {
-      $nameErr = "Valid name is required";
-      echo $nameErr;
-      
-    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $firstName)) 
-    {
-      $nameErr = "Valid name is required";
-      echo $nameErr;
+      //name
+        if (strlen($firstName) < 2 || !preg_match("/^[a-zA-Z-' ]*$/", $firstName))  //Lithuanian letters
+        {
+            $nameErr = "Valid name is required";
+            echo $nameErr;
+        }
+          //last name
+        if ((strlen($lastName) < 2) || !preg_match("/^[a-zA-Z-' ]*$/", $lastName)) //Lithuanian letters
+        {
+            $surnameErr = "Valid surname is required";
+            echo $surnameErr;
+        } 
 
+        // Lithuanian account number
+        if (!preg_match("/^LT[0-9]18/", $accountNo)) 
+        { 
+            $accErr = "Valid account number is required";
+            echo $accErr;
+        } 
 
-      //last name
-    } elseif (strlen($lastName) < 2)
-    {
-      $surnameErr = "Valid surname is required";
-      echo $surnameErr;
-
-    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $lastName)) 
-    {
-      $surnameErr = "Valid surname is required";
-      echo $surnameErr;
-
-
-      // Lithuanian account number
-    } elseif (!preg_match("/^LT[0-9]18/", $accountNo)) { 
-
-          $accErr = "Valid account number is required";
-          echo $accErr;
-
-
-      // Personal code: 11 numbers
-    } elseif (!preg_match("/^[1-6][0-9]{10}/", $personalNo) && checkdate($personalStr)) 
-        $personalErr = "Valid account number is required";
-        echo $personalErr;
-
+        // Personal code
+        if (!preg_match("/^[1-6][0-9]{10}/", $personalNo) || !checkdate($personalStr)) 
+        {
+            $personalErr = "Valid account number is required";
+            echo $personalErr;
+        }
+    } else 
     {
         $servername = "localhost";
         $username = "root";
@@ -83,25 +81,22 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
         $insertData = "";
 
         try {
-          $connect = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-          // set the PDO error mode to exception
-          $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $connect = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            // set the PDO error mode to exception
+            $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-          $insertData = "INSERT INTO accounts (firstname, lastname, account_number, personal_code)
-          VALUES ($firstName, $lastName, $accountNo, $personalNo)";
-          // use exec() because no results are returned
-          $connect->exec($insertData);
-          echo "New record created successfully";
+            $insertData = "INSERT INTO accounts (firstname, lastname, account_number, personal_code)
+            VALUES ($firstName, $lastName, $accountNo, $personalNo)";
+            // use exec() because no results are returned
+            $connect->exec($insertData);
+            echo "New record created successfully";
 
-          } catch(PDOException $e) {
+        } catch(PDOException $e) {
             echo $insertData . "<br>" . $e->getMessage();
-          }
-          
-      $connect = null;
-    }
+        }
 
- 
-    
+        $connect = null;
+    }
 
     // header('Location: http://localhost/php_practice/php_bit_ex/bank/pages');
     // die;
